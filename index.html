@@ -531,8 +531,12 @@
         <article class="quote-card">
           <span class="eyebrow">Free Estimate</span>
           <h2>Tell us about your remodel.</h2>
-          <p class="fine-print">This demo form is ready for connection to email, CRM, or a form service. It currently opens the visitor's email app with the project details.</p>
-          <form data-estimate-form>
+          <p class="fine-print">Send your project details directly to ROMERO'S CARPENTRY. The request is captured securely and the team can follow up with the next step.</p>
+          <form name="estimate-request" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-estimate-form>
+            <input type="hidden" name="form-name" value="estimate-request" />
+            <p hidden>
+              <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+            </p>
             <div class="form-row">
               <input name="name" autocomplete="name" placeholder="Name" required />
               <input name="phone" autocomplete="tel" placeholder="Phone" required />
@@ -571,7 +575,7 @@
             <a href="tel:+19047292379"><strong>Phone</strong><span>(904) 729-2379</span></a>
             <span><strong>Services</strong><span>Kitchens, baths, floors, interiors</span></span>
             <span><strong>Areas</strong><span>Jacksonville + nearby communities</span></span>
-            <span><strong>Built by</strong><span>Trustbyte LLC</span></span>
+            <span><strong>Website by</strong><span>Trustbyte LLC</span></span>
           </div>
         </aside>
       </div>
@@ -672,16 +676,6 @@
           card.hidden = filter !== 'all' && card.dataset.project !== filter;
         });
       });
-    });
-
-    document.querySelector('[data-estimate-form]')?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const subject = encodeURIComponent("ROMERO'S CARPENTRY estimate request");
-      const body = encodeURIComponent(
-        `Name: ${data.get('name')}\nPhone: ${data.get('phone')}\nEmail: ${data.get('email')}\nProject: ${data.get('project')}\nCity: ${data.get('city')}\nTimeline: ${data.get('timeline')}\nMessage: ${data.get('message') || ''}`
-      );
-      window.location.href = `mailto:info@romeroscarpentry.com?subject=${subject}&body=${body}`;
     });
 
     const chatPanel = document.querySelector('[data-chat-panel]');
