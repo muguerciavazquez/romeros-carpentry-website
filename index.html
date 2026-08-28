@@ -532,7 +532,7 @@
           <span class="eyebrow">Free Estimate</span>
           <h2>Tell us about your remodel.</h2>
           <p class="fine-print">Send your project details directly to ROMERO'S CARPENTRY. The request is captured securely and the team can follow up with the next step.</p>
-          <form name="estimate-request" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-estimate-form>
+          <form name="estimate-request" method="POST" action="/" netlify data-netlify="true" netlify-honeypot="bot-field" data-estimate-form>
             <input type="hidden" name="form-name" value="estimate-request" />
             <p hidden>
               <label>Do not fill this out if you are human: <input name="bot-field" /></label>
@@ -676,6 +676,32 @@
           card.hidden = filter !== 'all' && card.dataset.project !== filter;
         });
       });
+    });
+
+    const encodeFormData = (formData) => new URLSearchParams(formData).toString();
+    document.querySelector('[data-estimate-form]')?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const button = form.querySelector('button[type="submit"]');
+      const originalText = button.textContent;
+      button.textContent = 'Sending request...';
+      button.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(formData)
+        });
+        window.location.href = '/thank-you.html';
+      } catch (error) {
+        button.textContent = 'Try Again';
+        button.disabled = false;
+        alert('We could not send the request. Please call (904) 729-2379 or try again.');
+      } finally {
+        if (!button.disabled) button.textContent = originalText;
+      }
     });
 
     const chatPanel = document.querySelector('[data-chat-panel]');
