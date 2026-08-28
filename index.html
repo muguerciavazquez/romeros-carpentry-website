@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROMERO'S CARPENTRY | Jacksonville Custom Carpentry & Remodeling</title>
+  <meta name="description" content="ROMERO'S CARPENTRY builds custom carpentry, kitchens, bathrooms, flooring, fireplaces, and interior remodels across Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta property="og:title" content="ROMERO'S CARPENTRY | Jacksonville Custom Carpentry & Remodeling" />
+  <meta property="og:description" content="Built Right. Built To Last. Custom carpentry and remodeling services for Jacksonville-area homeowners." />
+  <meta property="og:image" content="./assets/hero-after.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070707;
+      --surface: #101012;
+      --surface-2: #171719;
+      --surface-3: #f5f1e9;
+      --text: #f7f3eb;
+      --muted: #b9afa0;
+      --dark-text: #17130f;
+      --gold: #b9854e;
+      --gold-2: #e3bd7d;
+      --line: rgba(227, 189, 125, .2);
+      --white-line: rgba(255, 255, 255, .1);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .45);
+      --radius: 8px;
+      --max: 1180px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f4ed;
+      --surface: #ffffff;
+      --surface-2: #efe8dc;
+      --surface-3: #111111;
+      --text: #17130f;
+      --muted: #685f52;
+      --dark-text: #f7f3eb;
+      --line: rgba(124, 87, 25, .2);
+      --white-line: rgba(20, 16, 10, .12);
+      --shadow: 0 24px 70px rgba(56, 43, 22, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(185, 133, 78, .18), transparent 30rem),
+        radial-gradient(circle at 80% 15%, rgba(174, 151, 112, .08), transparent 24rem),
+        linear-gradient(180deg, #050505 0%, #11100f 42%, #070707 100%);
+      line-height: 1.6;
+    }
+    [data-theme="light"] body {
+      background:
+        radial-gradient(circle at top left, rgba(214, 171, 77, .22), transparent 28rem),
+        linear-gradient(180deg, #fffaf0 0%, #f7f4ed 48%, #ece4d6 100%);
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--gold-2); outline-offset: 3px; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin-inline: auto; }
+    .skip-link { position: absolute; left: -999px; top: 16px; z-index: 1000; background: var(--gold-2); color: #111; padding: 10px 14px; border-radius: var(--radius); }
+    .skip-link:focus { left: 16px; }
+
+    .topbar { background: #050505; border-bottom: 1px solid var(--white-line); font-size: 14px; color: var(--muted); }
+    [data-theme="light"] .topbar { background: #fffaf0; }
+    .topbar .container { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; }
+    .topbar a { color: var(--gold-2); font-weight: 800; }
+
+    .site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--white-line); background: rgba(8, 8, 9, .82); backdrop-filter: blur(16px); }
+    [data-theme="light"] .site-header { background: rgba(255, 250, 240, .86); }
+    .site-header .container { min-height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; min-width: max-content; }
+    .brand-logo { width: 104px; height: 88px; object-fit: contain; object-position: center; border: 1px solid rgba(227,189,125,.34); border-radius: var(--radius); background: #050505; padding: 7px; box-shadow: 0 16px 36px rgba(0,0,0,.28); }
+    .brand strong { display: block; letter-spacing: .08em; text-transform: uppercase; line-height: 1.1; font-size: 16px; }
+    .brand span { display: block; color: var(--muted); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 15px; }
+    .nav a:hover { color: var(--text); }
+    .nav-toggle { display: none; border: 1px solid var(--white-line); background: transparent; color: var(--text); border-radius: var(--radius); min-height: 44px; padding: 0 12px; }
+    .theme-toggle { min-width: 46px; min-height: 46px; display: inline-grid; place-items: center; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255,255,255,.04); color: var(--text); font-size: 20px; }
+    [data-theme="light"] .theme-toggle { background: rgba(20,16,10,.04); }
+
+    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: var(--radius); border: 1px solid transparent; font-weight: 900; line-height: 1; }
+    .btn-primary { background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: #15100a; box-shadow: 0 18px 40px rgba(214,171,77,.22); }
+    .btn-secondary { border-color: var(--white-line); background: rgba(255,255,255,.04); color: var(--text); }
+    .btn-dark { background: #111; color: #fff; }
+
+    .hero { padding: clamp(56px, 8vw, 104px) 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr); gap: 42px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--gold-2); background: rgba(214,171,77,.08); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 900; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 20px; font-size: clamp(46px, 7vw, 92px); line-height: .92; letter-spacing: 0; text-transform: uppercase; max-width: 11ch; }
+    .hero-copy { max-width: 64ch; color: var(--muted); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .trust-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 28px; max-width: 680px; }
+    .trust-chip { border: 1px solid var(--white-line); background: rgba(255,255,255,.04); border-radius: var(--radius); padding: 14px; min-height: 92px; }
+    .trust-chip strong { display: block; color: var(--gold-2); font-size: 22px; line-height: 1.1; }
+    .trust-chip span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .hero-media { position: relative; }
+    .hero-media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .hero-logo-plate { position: absolute; right: 18px; top: 18px; width: min(170px, 34%); aspect-ratio: 1 / 1; display: grid; place-items: center; border: 1px solid rgba(227,189,125,.28); border-radius: var(--radius); background: rgba(5,5,5,.74); backdrop-filter: blur(14px); padding: 10px; }
+    .hero-logo-plate img { width: 100%; height: 100%; object-fit: contain; border: 0; box-shadow: none; aspect-ratio: auto; }
+    .media-badge { position: absolute; left: 18px; bottom: 18px; width: min(320px, calc(100% - 36px)); border: 1px solid rgba(255,255,255,.16); background: rgba(8,8,9,.82); backdrop-filter: blur(14px); border-radius: var(--radius); padding: 16px; }
+    .media-badge strong { display: block; color: var(--gold-2); text-transform: uppercase; line-height: 1.15; }
+    .media-badge span { color: var(--muted); font-size: 14px; }
+
+    section { padding: 72px 0; }
+    .brand-watermark { position: relative; overflow: hidden; }
+    .brand-watermark::before {
+      content: "";
+      position: absolute;
+      right: max(18px, calc((100vw - var(--max)) / 2));
+      top: 30px;
+      width: min(360px, 56vw);
+      aspect-ratio: 1 / .84;
+      background: url("./assets/romeros-carpentry-logo.png") center / contain no-repeat;
+      opacity: .045;
+      pointer-events: none;
+      filter: saturate(.9);
+    }
+    .brand-watermark > .container { position: relative; z-index: 1; }
+    .section-head { display: grid; grid-template-columns: minmax(0, .85fr) minmax(280px, .55fr); gap: 28px; align-items: end; margin-bottom: 30px; }
+    h2 { margin: 12px 0 0; font-size: clamp(34px, 4.6vw, 62px); line-height: .98; text-transform: uppercase; letter-spacing: 0; max-width: 12ch; }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .service-grid, .area-grid, .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .service-card, .area-card, .review-card, .faq-item, .quote-card {
+      border: 1px solid var(--white-line);
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .service-card span, .area-card span { color: var(--gold-2); font-weight: 900; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    .service-card h3, .area-card h3, .review-card h3, .faq-item h3 { margin: 10px 0 8px; font-size: 22px; line-height: 1.15; }
+    .service-card p, .area-card p, .review-card p, .faq-item p { margin: 0; color: var(--muted); }
+    .service-card, .project-card, .review-card, .booking-card, .quote-card { transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .service-card:hover, .project-card:hover, .review-card:hover, .booking-card:hover, .quote-card:hover { transform: translateY(-3px); border-color: rgba(227,189,125,.34); box-shadow: 0 18px 48px rgba(0,0,0,.2); }
+
+    .split { display: grid; grid-template-columns: minmax(300px, .9fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
+    .compare { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); min-height: 520px; background: #111; }
+    .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .compare .before { clip-path: inset(0 50% 0 0); }
+    .compare input { position: absolute; inset: auto 20px 22px; width: calc(100% - 40px); z-index: 3; accent-color: var(--gold); }
+    .compare-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: var(--gold-2); z-index: 2; }
+    .label { position: absolute; top: 16px; z-index: 3; padding: 6px 10px; border-radius: var(--radius); background: rgba(0,0,0,.72); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
+    .label.before-label { left: 16px; }
+    .label.after-label { right: 16px; }
+    .story-panel { border: 1px solid var(--white-line); border-radius: var(--radius); background: var(--surface); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+    .story-panel h2 { max-width: 14ch; }
+    .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .metric { background: rgba(255,255,255,.04); border: 1px solid var(--white-line); border-radius: var(--radius); padding: 16px; }
+    .metric strong { color: var(--gold-2); font-size: 22px; }
+    .metric span { display: block; color: var(--muted); font-size: 13px; }
+
+    .gallery-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .filter { border: 1px solid var(--white-line); background: rgba(255,255,255,.04); color: var(--text); min-height: 40px; padding: 8px 12px; border-radius: var(--radius); font-weight: 800; }
+    .filter.active { background: var(--gold-2); color: #111; border-color: transparent; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .project-card { overflow: hidden; border: 1px solid var(--white-line); border-radius: var(--radius); background: var(--surface); }
+    .project-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .project-card div { padding: 18px; }
+    .project-card h3 { margin: 0 0 4px; }
+    .project-card p { margin: 0; color: var(--muted); }
+    .light-band { background: var(--surface-3); color: var(--dark-text); }
+    [data-theme="light"] .light-band { background: #111; color: #f7f3eb; }
+    .light-band .eyebrow { color: #705018; border-color: rgba(112, 80, 24, .25); background: rgba(214,171,77,.15); }
+    .light-band .section-head p, .light-band .area-card p, .light-band .faq-item p { color: #5f574d; }
+    .light-band .area-card, .light-band .faq-item { background: #fffaf1; border-color: #ded2bd; }
+    .area-card a { display: inline-flex; margin-top: 14px; color: #7b5619; font-weight: 900; }
+
+    .quote-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(340px, .75fr); gap: 18px; align-items: start; }
+    .booking-layout { display: grid; grid-template-columns: minmax(0, .75fr) minmax(340px, .9fr); gap: 18px; align-items: stretch; }
+    .booking-card, .chat-preview {
+      border: 1px solid var(--white-line);
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .booking-card h2 { max-width: 13ch; }
+    .booking-steps { display: grid; gap: 10px; margin: 22px 0; }
+    .booking-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; color: var(--muted); }
+    .booking-step strong { display: grid; place-items: center; width: 34px; height: 34px; border-radius: var(--radius); background: var(--gold-2); color: #111; }
+    .calendar-box { min-height: 360px; display: grid; place-items: center; text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); background: rgba(0,0,0,.18); padding: 24px; }
+    .calendar-box p { color: var(--muted); }
+    .chat-preview { display: flex; flex-direction: column; gap: 12px; }
+    .chat-line { max-width: 88%; padding: 12px 14px; border-radius: var(--radius); background: rgba(255,255,255,.06); color: var(--muted); }
+    .chat-line.customer { margin-left: auto; background: rgba(214,171,77,.18); color: var(--text); }
+    form { display: grid; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    input, select, textarea { width: 100%; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255,255,255,.05); color: var(--text); padding: 13px 14px; }
+    textarea { min-height: 120px; resize: vertical; }
+    select option { color: #111; }
+    .fine-print { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    .contact-list { display: grid; gap: 10px; margin-top: 22px; }
+    .contact-list a, .contact-list span { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--white-line); padding-bottom: 10px; color: var(--muted); }
+    .contact-list strong { color: var(--text); }
+
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .review-card strong { color: var(--gold-2); }
+
+    .footer { padding: 32px 0 86px; border-top: 1px solid var(--white-line); color: var(--muted); }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: none; grid-template-columns: 1fr 1fr; background: #050505; border-top: 1px solid var(--white-line); padding: 10px; gap: 10px; }
+    [data-theme="light"] .sticky-cta { background: #fffaf0; }
+    .chat-widget { position: fixed; right: 18px; bottom: 18px; z-index: 70; width: min(380px, calc(100% - 36px)); }
+    .chat-toggle { width: 100%; justify-content: space-between; box-shadow: var(--shadow); }
+    .chat-panel { display: none; margin-bottom: 10px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #101012; box-shadow: var(--shadow); }
+    .chat-panel.open { display: block; }
+    .chat-panel.attention { animation: chatPulse 1.4s ease 1; }
+    .chat-head { display: flex; justify-content: space-between; gap: 14px; padding: 16px; border-bottom: 1px solid var(--white-line); }
+    .chat-head strong { display: block; }
+    .chat-head span { display: block; color: var(--muted); font-size: 13px; }
+    .chat-close { border: 1px solid var(--white-line); background: transparent; color: var(--text); border-radius: var(--radius); min-width: 38px; height: 38px; }
+    .chat-messages { max-height: 310px; overflow: auto; display: grid; gap: 10px; padding: 14px; }
+    .message { width: fit-content; max-width: 88%; padding: 10px 12px; border-radius: var(--radius); background: rgba(255,255,255,.06); color: var(--muted); font-size: 14px; }
+    .message.user { margin-left: auto; background: rgba(214,171,77,.18); color: var(--text); }
+    .quick-questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 14px 14px; }
+    .quick-questions button { min-height: 40px; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255,255,255,.04); color: var(--text); font-weight: 800; font-size: 13px; }
+    .chat-input-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 14px; border-top: 1px solid var(--white-line); }
+    .chat-input-row input { min-height: 42px; }
+    .chat-greeting {
+      position: absolute;
+      right: 0;
+      bottom: 58px;
+      width: min(310px, 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #101012;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .chat-greeting.hidden { display: none; }
+    .chat-greeting strong { display: block; color: var(--gold-2); }
+    .chat-greeting p { margin: 4px 0 12px; color: var(--muted); font-size: 14px; }
+    .chat-greeting-actions { display: flex; gap: 8px; }
+    .chat-greeting-actions button { flex: 1; min-height: 38px; border-radius: var(--radius); border: 1px solid var(--white-line); font-weight: 900; }
+    .chat-greeting-actions button:first-child { background: var(--gold-2); color: #111; border-color: transparent; }
+    .chat-greeting-actions button:last-child { background: transparent; color: var(--text); }
+    @keyframes chatPulse {
+      0% { transform: translateY(10px); opacity: .7; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 940px) {
+      .topbar .container { flex-direction: column; gap: 4px; }
+      .nav-toggle { display: inline-flex; align-items: center; }
+      .nav { position: fixed; inset: 76px 16px auto; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px; background: #101012; border: 1px solid var(--white-line); border-radius: var(--radius); box-shadow: var(--shadow); }
+      [data-theme="light"] .nav { background: #fffaf0; }
+      .nav.open { display: flex; }
+      .nav a { padding: 12px; border-bottom: 1px solid var(--white-line); }
+      .nav .btn { margin-top: 10px; }
+      .hero-grid, .section-head, .split, .quote-layout, .booking-layout { grid-template-columns: 1fr; }
+      .hero-media { order: -1; }
+      h1 { max-width: 12ch; }
+      .service-grid, .area-grid, .review-grid, .faq-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .compare { min-height: 440px; }
+      .sticky-cta { display: grid; }
+      .chat-widget { right: 10px; bottom: 74px; width: calc(100% - 20px); }
+    }
+
+    @media (max-width: 620px) {
+      .topbar { display: none; }
+      .site-header .container { min-height: 68px; }
+      .brand-logo { width: 78px; height: 66px; padding: 5px; }
+      .brand span { display: none; }
+      .hero { padding-top: 28px; }
+      .trust-row, .metrics, .form-row { grid-template-columns: 1fr; }
+      .quick-questions { grid-template-columns: 1fr; }
+      section { padding: 54px 0; }
+      .hero-media img { aspect-ratio: 1 / 1.08; }
+      .compare { min-height: 360px; }
+      .contact-list a, .contact-list span { flex-direction: column; gap: 2px; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "ROMERO'S CARPENTRY",
+      "image": "./assets/hero-after.png",
+      "telephone": "+1-904-729-2379",
+      "areaServed": ["Jacksonville FL", "Ponte Vedra FL", "Nocatee FL", "St. Augustine FL", "Northeast Florida"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jacksonville",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "url": "https://www.romeroscarpentry.com",
+      "priceRange": "$$",
+      "description": "Built Right. Built To Last. ROMERO'S CARPENTRY serves Jacksonville-area homeowners with custom carpentry and premium residential remodeling."
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Does ROMERO'S CARPENTRY offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes. Homeowners can request a free estimate for kitchens, bathrooms, flooring, fireplaces, interiors, and full remodeling projects."}},
+        {"@type":"Question","name":"What areas does ROMERO'S CARPENTRY serve?","acceptedAnswer":{"@type":"Answer","text":"ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities."}},
+        {"@type":"Question","name":"What remodeling services are available?","acceptedAnswer":{"@type":"Answer","text":"Services include kitchen remodeling, bathroom remodeling, flooring, fireplace transformations, interior renovations, and custom home upgrades."}}
+      ]
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="topbar">
+    <div class="container">
+      <span>Serving Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.</span>
+      <a href="tel:+19047292379">(904) 729-2379</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="ROMERO'S CARPENTRY home">
+        <img class="brand-logo" src="./assets/romeros-carpentry-symbol.png" alt="ROMERO'S CARPENTRY logo" width="685" height="650" />
+        <span>
+          <strong>ROMERO'S CARPENTRY</strong>
+          <span>Built Right. Built To Last.</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation">Menu</button>
+      <nav class="nav" data-nav aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#areas">Areas</a>
+        <a href="#projects">Projects</a>
+        <a href="#faq">FAQ</a>
+        <a href="#booking">Schedule</a>
+        <a class="btn btn-primary" href="#estimate">Free Estimate</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme">☀</button>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Jacksonville Custom Carpentry & Remodeling</span>
+          <h1>Custom work built right, built to last.</h1>
+          <p class="hero-copy">ROMERO'S CARPENTRY transforms kitchens, bathrooms, flooring, fireplaces, trim, feature walls, and interior living spaces for homeowners across Jacksonville and nearby Northeast Florida communities.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#estimate">Request Free Estimate</a>
+            <a class="btn btn-secondary" href="#projects">View Project Proof</a>
+          </div>
+          <div class="trust-row" aria-label="Company highlights">
+            <div class="trust-chip"><strong>Free</strong><span>Estimate before you commit</span></div>
+            <div class="trust-chip"><strong>Custom</strong><span>Carpentry and remodeling details</span></div>
+            <div class="trust-chip"><strong>Built</strong><span>Right, durable, and clean</span></div>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="./assets/hero-after.png" alt="Modern remodeled living room with custom fireplace wall and warm wood mantle" width="1024" height="1024" fetchpriority="high" />
+          <span class="hero-logo-plate" aria-hidden="true">
+            <img src="./assets/romeros-carpentry-symbol.png" alt="" />
+          </span>
+          <figcaption class="media-badge">
+            <strong>Premium interior transformations</strong>
+            <span>Designed for homeowners comparing trusted remodeling contractors.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="brand-watermark" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2>Built around the way homeowners search.</h2>
+          </div>
+          <p>Each core service can become its own SEO landing page, giving ROMERO'S CARPENTRY more chances to rank for high-intent remodeling searches.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card"><span>Kitchen Remodeling</span><h3>Modern kitchens</h3><p>Cabinets, counters, layout improvements, lighting, islands, backsplashes, and finish coordination.</p></article>
+          <article class="service-card"><span>Bathroom Remodeling</span><h3>Spa-style bathrooms</h3><p>Walk-in showers, tile, vanities, fixtures, storage, lighting, and practical everyday upgrades.</p></article>
+          <article class="service-card"><span>Flooring</span><h3>Durable new floors</h3><p>Installation and replacement options that refresh the whole home and stand up to Florida living.</p></article>
+          <article class="service-card"><span>Fireplaces</span><h3>Feature walls</h3><p>Custom fireplace walls, mantles, paneling, tile surrounds, and built-in visual focal points.</p></article>
+          <article class="service-card"><span>Interior Renovations</span><h3>Full-room updates</h3><p>Living rooms, dining areas, trim, paint, carpentry, lighting, and cohesive interior transformations.</p></article>
+          <article class="service-card"><span>Custom Projects</span><h3>Tailored upgrades</h3><p>Project planning, materials coordination, and finish details built around each homeowner's goals.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="transformation">
+      <div class="container split">
+        <div class="compare" data-compare>
+          <img src="./assets/hero-after.png" alt="Finished remodeled living room after ROMERO'S CARPENTRY style renovation" />
+          <img class="before" data-before src="./assets/hero-before.png" alt="Dated living room before remodeling" />
+          <span class="label before-label">Before</span>
+          <span class="label after-label">After</span>
+          <span class="compare-line" data-line></span>
+          <input data-slider type="range" min="8" max="92" value="50" aria-label="Compare before and after remodel" />
+        </div>
+        <article class="story-panel">
+          <div>
+            <span class="eyebrow">Before + After</span>
+            <h2>Search rankings need proof, not just promises.</h2>
+            <p>For remodeling, strong visual evidence is the difference between a visitor browsing and a homeowner calling. This site is built to showcase real transformations as soon as the client provides completed project photos.</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>Photos</strong><span>Before, progress, and final shots</span></div>
+            <div class="metric"><strong>Local</strong><span>City and neighborhood context</span></div>
+            <div class="metric"><strong>Details</strong><span>Materials, scope, and result</span></div>
+            <div class="metric"><strong>CTA</strong><span>Estimate form after proof</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="light-band" id="areas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Service Areas</span>
+            <h2>Local pages for local intent.</h2>
+          </div>
+          <p>These blocks can become full landing pages with unique photos, FAQs, testimonials, and projects for each community.</p>
+        </div>
+        <div class="area-grid">
+          <article class="area-card"><span>Duval County</span><h3>Jacksonville</h3><p>Kitchen, bathroom, flooring, fireplace, and interior remodels for Jacksonville homeowners.</p><a href="#estimate">Plan a Jacksonville remodel</a></article>
+          <article class="area-card"><span>Coastal Homes</span><h3>Ponte Vedra</h3><p>Premium finishes, bright interiors, and practical upgrades for coastal Northeast Florida homes.</p><a href="#estimate">Start in Ponte Vedra</a></article>
+          <article class="area-card"><span>Growing Communities</span><h3>Nocatee</h3><p>Modern upgrades for newer homes, including kitchens, baths, floors, and custom feature walls.</p><a href="#estimate">Remodel in Nocatee</a></article>
+          <article class="area-card"><span>Historic + Modern</span><h3>St. Augustine</h3><p>Thoughtful remodeling that respects the home while making the space easier to live in.</p><a href="#estimate">Book in St. Augustine</a></article>
+          <article class="area-card"><span>Northeast Florida</span><h3>Nearby Areas</h3><p>Service-area content can expand as ROMERO'S CARPENTRY confirms preferred communities and project types.</p><a href="#estimate">Ask about your area</a></article>
+          <article class="area-card"><span>SEO Strategy</span><h3>City + Service</h3><p>Target searches like bathroom remodeler Jacksonville FL and kitchen renovation Ponte Vedra.</p><a href="#services">Explore services</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Project Gallery</span>
+            <h2>Visual proof for quote-ready homeowners.</h2>
+          </div>
+          <p>Temporary visuals are in place now. Replace them with real ROMERO'S CARPENTRY project photography for the strongest ranking and conversion impact.</p>
+        </div>
+        <div class="gallery-tools" aria-label="Project filters">
+          <button class="filter active" type="button" data-filter="all">All</button>
+          <button class="filter" type="button" data-filter="kitchen">Kitchens</button>
+          <button class="filter" type="button" data-filter="bathroom">Bathrooms</button>
+          <button class="filter" type="button" data-filter="fireplace">Fireplaces</button>
+        </div>
+        <div class="gallery-grid">
+          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-remodel.png" alt="Modern kitchen remodel with white cabinets and warm wood island" loading="lazy" /><div><h3>Kitchen remodel concept</h3><p>Cabinets, counters, lighting, island, and warm finish coordination.</p></div></article>
+          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-remodel.png" alt="Spa-style bathroom remodel with walk-in shower and floating vanity" loading="lazy" /><div><h3>Bathroom remodel concept</h3><p>Walk-in shower, tile, glass, vanity, fixtures, and bright lighting.</p></div></article>
+          <article class="project-card" data-project="fireplace"><img src="./assets/hero-after.png" alt="Custom fireplace wall remodel with bright paneling and wood mantle" loading="lazy" /><div><h3>Fireplace feature wall</h3><p>Custom focal-point wall designed to change the feel of the living room.</p></div></article>
+          <article class="project-card" data-project="fireplace"><img src="./assets/hero-before.png" alt="Dated living room before fireplace and interior remodel" loading="lazy" /><div><h3>Before condition</h3><p>Before photos help prove the scale and value of the transformation.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-band" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Answers that match real searches.</h2>
+          </div>
+          <p>FAQ content helps visitors self-qualify and gives search engines clearer context about services, locations, and intent.</p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item"><h3>Does ROMERO'S CARPENTRY offer free estimates?</h3><p>Yes. Homeowners can request a free estimate for kitchens, bathrooms, flooring, fireplaces, interiors, and full remodeling projects.</p></article>
+          <article class="faq-item"><h3>What areas do you serve?</h3><p>ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.</p></article>
+          <article class="faq-item"><h3>What should I prepare before calling?</h3><p>Bring your project type, city, timeline, rough budget, and any photos of the current space or inspiration images.</p></article>
+          <article class="faq-item"><h3>Can this site rank for multiple cities?</h3><p>Yes, with unique service-area pages, real project proof, consistent business information, reviews, and fast technical performance.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Reviews</span>
+            <h2>Trust signals near the call to action.</h2>
+          </div>
+          <p>Replace these sample testimonials with real Google reviews after client approval.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card"><strong>★★★★★</strong><h3>Clear process</h3><p>"The team explained the scope, timeline, and finish options before work started."</p></article>
+          <article class="review-card"><strong>★★★★★</strong><h3>Beautiful result</h3><p>"Our living room feels completely different after the fireplace and flooring updates."</p></article>
+          <article class="review-card"><strong>★★★★★</strong><h3>Easy estimate</h3><p>"Fast response, helpful suggestions, and a remodel plan that made sense for our home."</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-watermark" id="booking">
+      <div class="container booking-layout">
+        <article class="booking-card">
+          <span class="eyebrow">Ask + Schedule</span>
+          <h2>No waiting to book a consultation.</h2>
+          <p>Visitors can ask quick remodeling questions in the chat box, then schedule a consultation directly from the website through a Google Calendar appointment link.</p>
+          <div class="booking-steps">
+            <div class="booking-step"><strong>1</strong><span>Ask about services, service areas, timelines, or what to prepare before an estimate.</span></div>
+            <div class="booking-step"><strong>2</strong><span>Choose a time through Google Calendar appointment scheduling.</span></div>
+            <div class="booking-step"><strong>3</strong><span>Send project details so ROMERO'S CARPENTRY can follow up prepared.</span></div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" data-calendar-link href="https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ROMEROS_CARPENTRY_BOOKING_LINK" target="_blank" rel="noopener">Schedule on Google Calendar</a>
+            <button class="btn btn-secondary" type="button" data-open-chat>Ask a Question</button>
+          </div>
+          <p class="fine-print">Replace the placeholder calendar URL with the client's real Google Calendar appointment schedule link.</p>
+        </article>
+        <aside class="chat-preview" aria-label="Customer chat preview">
+          <div class="chat-line">Hi, I can help with common remodeling questions before you book.</div>
+          <div class="chat-line customer">Do you remodel bathrooms in Jacksonville?</div>
+          <div class="chat-line">Yes. ROMERO'S CARPENTRY handles bathroom remodels in Jacksonville and nearby communities. You can schedule a free estimate when you are ready.</div>
+          <div class="chat-line customer">What should I prepare?</div>
+          <div class="chat-line">Photos of the current space, your city, project goals, preferred timeline, and any inspiration images are helpful.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="estimate">
+      <div class="container quote-layout">
+        <article class="quote-card">
+          <span class="eyebrow">Free Estimate</span>
+          <h2>Tell us about your remodel.</h2>
+          <p class="fine-print">This demo form is ready for connection to email, CRM, or a form service. It currently opens the visitor's email app with the project details.</p>
+          <form data-estimate-form>
+            <div class="form-row">
+              <input name="name" autocomplete="name" placeholder="Name" required />
+              <input name="phone" autocomplete="tel" placeholder="Phone" required />
+            </div>
+            <div class="form-row">
+              <input name="email" autocomplete="email" type="email" placeholder="Email" required />
+              <select name="project" required>
+                <option value="">Project type</option>
+                <option>Kitchen remodeling</option>
+                <option>Bathroom remodeling</option>
+                <option>Flooring</option>
+                <option>Fireplace / feature wall</option>
+                <option>Interior renovation</option>
+                <option>Full-home remodel</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <input name="city" placeholder="City / neighborhood" required />
+              <select name="timeline" required>
+                <option value="">Timeline</option>
+                <option>As soon as possible</option>
+                <option>1-3 months</option>
+                <option>3-6 months</option>
+                <option>Planning ahead</option>
+              </select>
+            </div>
+            <textarea name="message" placeholder="What would you like to remodel?"></textarea>
+            <button class="btn btn-primary" type="submit">Send Estimate Request</button>
+          </form>
+        </article>
+        <aside class="quote-card">
+          <span class="eyebrow">Contact</span>
+          <h3>ROMERO'S CARPENTRY</h3>
+          <p>For the fastest conversion path, keep phone and quote actions visible throughout the page.</p>
+          <div class="contact-list">
+            <a href="tel:+19047292379"><strong>Phone</strong><span>(904) 729-2379</span></a>
+            <span><strong>Services</strong><span>Kitchens, baths, floors, interiors</span></span>
+            <span><strong>Areas</strong><span>Jacksonville + nearby communities</span></span>
+            <span><strong>Built by</strong><span>Trustbyte LLC</span></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>ROMERO'S CARPENTRY | Built Right. Built To Last.</span>
+      <span>Website strategy and build by Trustbyte LLC.</span>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" aria-label="Mobile contact actions">
+    <a class="btn btn-secondary" href="tel:+19047292379">Call Now</a>
+    <a class="btn btn-primary" href="#estimate">Free Estimate</a>
+  </div>
+
+  <div class="chat-widget" aria-live="polite">
+    <div class="chat-greeting" data-chat-greeting>
+      <strong>How can I help?</strong>
+      <p>Ask our AI-assisted remodel helper about services, areas, estimates, or booking a consultation.</p>
+      <div class="chat-greeting-actions">
+        <button type="button" data-open-chat>Ask now</button>
+        <button type="button" data-dismiss-chat>Later</button>
+      </div>
+    </div>
+    <div class="chat-panel" data-chat-panel>
+      <div class="chat-head">
+        <span>
+          <strong>AI-Assisted Remodel Helper</strong>
+          <span>Ask questions or schedule a consultation.</span>
+        </span>
+        <button class="chat-close" type="button" data-close-chat aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" data-chat-messages>
+        <div class="message">Hi, how can I help? I can answer common questions about remodeling services, service areas, estimates, and scheduling.</div>
+      </div>
+      <div class="quick-questions">
+        <button type="button" data-question="services">Services</button>
+        <button type="button" data-question="areas">Service areas</button>
+        <button type="button" data-question="prepare">What to prepare</button>
+        <button type="button" data-question="schedule">Schedule</button>
+      </div>
+      <form class="chat-input-row" data-chat-form>
+        <input data-chat-input placeholder="Ask a question" aria-label="Ask a question" />
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </div>
+    <button class="btn btn-primary chat-toggle" type="button" data-chat-toggle>
+      <span>Ask or Schedule</span>
+      <span>+</span>
+    </button>
+  </div>
+
+  <script>
+    const calendarUrl = 'https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ROMEROS_CARPENTRY_BOOKING_LINK';
+    const root = document.documentElement;
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    const savedTheme = localStorage.getItem('romeros-carpentry-theme') || 'dark';
+    const setTheme = (theme) => {
+      root.dataset.theme = theme;
+      localStorage.setItem('romeros-carpentry-theme', theme);
+      if (themeToggle) {
+        themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+        themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+    };
+    setTheme(savedTheme);
+    themeToggle?.addEventListener('click', () => {
+      setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+
+    const nav = document.querySelector('[data-nav]');
+    const navToggle = document.querySelector('[data-nav-toggle]');
+    navToggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', () => nav?.classList.remove('open'));
+    });
+
+    const slider = document.querySelector('[data-slider]');
+    const before = document.querySelector('[data-before]');
+    const line = document.querySelector('[data-line]');
+    slider?.addEventListener('input', (event) => {
+      const value = event.target.value;
+      before.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      line.style.left = `${value}%`;
+    });
+
+    const filters = document.querySelectorAll('[data-filter]');
+    const projects = document.querySelectorAll('[data-project]');
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        filters.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        projects.forEach((card) => {
+          card.hidden = filter !== 'all' && card.dataset.project !== filter;
+        });
+      });
+    });
+
+    document.querySelector('[data-estimate-form]')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const subject = encodeURIComponent("ROMERO'S CARPENTRY estimate request");
+      const body = encodeURIComponent(
+        `Name: ${data.get('name')}\nPhone: ${data.get('phone')}\nEmail: ${data.get('email')}\nProject: ${data.get('project')}\nCity: ${data.get('city')}\nTimeline: ${data.get('timeline')}\nMessage: ${data.get('message') || ''}`
+      );
+      window.location.href = `mailto:info@romeroscarpentry.com?subject=${subject}&body=${body}`;
+    });
+
+    const chatPanel = document.querySelector('[data-chat-panel]');
+    const chatGreeting = document.querySelector('[data-chat-greeting]');
+    const chatMessages = document.querySelector('[data-chat-messages]');
+    const chatInput = document.querySelector('[data-chat-input]');
+    const cannedAnswers = {
+      services: "ROMERO'S CARPENTRY can help with kitchen remodeling, bathroom remodeling, flooring, fireplace feature walls, interior renovations, and custom home upgrades.",
+      areas: "ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.",
+      prepare: 'Helpful details include photos of the current space, your city, project type, rough timeline, budget range, and inspiration images.',
+      schedule: "You can schedule directly through the Google Calendar appointment link. Replace the placeholder URL with the official ROMERO'S CARPENTRY booking calendar before launch.",
+      estimate: 'Free estimates are available. You can use the quote form, call (904) 729-2379, or schedule through the calendar link.',
+      timeline: 'Timelines depend on project scope, materials, and availability. A quick consultation is the best way to set expectations.',
+      cost: 'Project cost depends on scope, materials, layout changes, and finish level. The estimate request helps the team understand the project before quoting.'
+    };
+
+    const addMessage = (text, type = 'bot') => {
+      const bubble = document.createElement('div');
+      bubble.className = type === 'user' ? 'message user' : 'message';
+      bubble.textContent = text;
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const answerQuestion = (question) => {
+      const normalized = question.toLowerCase();
+      if (cannedAnswers[question]) return cannedAnswers[question];
+      if (normalized.includes('cost') || normalized.includes('price') || normalized.includes('budget')) return cannedAnswers.cost;
+      if (normalized.includes('time') || normalized.includes('long') || normalized.includes('timeline')) return cannedAnswers.timeline;
+      if (normalized.includes('schedule') || normalized.includes('appointment') || normalized.includes('calendar')) return cannedAnswers.schedule;
+      if (normalized.includes('area') || normalized.includes('jacksonville') || normalized.includes('ponte') || normalized.includes('nocatee') || normalized.includes('augustine')) return cannedAnswers.areas;
+      if (normalized.includes('service') || normalized.includes('kitchen') || normalized.includes('bath') || normalized.includes('floor') || normalized.includes('fireplace')) return cannedAnswers.services;
+      return "Great question. For the fastest answer, schedule a consultation or send your project details through the estimate form so ROMERO'S CARPENTRY can follow up directly.";
+    };
+
+    const openChat = () => {
+      chatPanel?.classList.add('open');
+      chatPanel?.classList.add('attention');
+      chatGreeting?.classList.add('hidden');
+      chatInput?.focus();
+      setTimeout(() => chatPanel?.classList.remove('attention'), 1600);
+    };
+
+    document.querySelectorAll('[data-open-chat], [data-chat-toggle]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (chatPanel?.classList.contains('open')) {
+          chatPanel.classList.remove('open');
+        } else {
+          openChat();
+        }
+      });
+    });
+
+    document.querySelector('[data-close-chat]')?.addEventListener('click', () => chatPanel?.classList.remove('open'));
+    document.querySelector('[data-dismiss-chat]')?.addEventListener('click', () => chatGreeting?.classList.add('hidden'));
+
+    setTimeout(() => {
+      if (!chatPanel?.classList.contains('open')) {
+        chatGreeting?.classList.remove('hidden');
+      }
+    }, 1200);
+
+    document.querySelectorAll('[data-question]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const question = button.dataset.question;
+        addMessage(button.textContent, 'user');
+        addMessage(answerQuestion(question));
+      });
+    });
+
+    document.querySelector('[data-chat-form]')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = chatInput.value.trim();
+      if (!value) return;
+      addMessage(value, 'user');
+      addMessage(answerQuestion(value));
+      chatInput.value = '';
+    });
+  </script>
+</body>
+</html>
+

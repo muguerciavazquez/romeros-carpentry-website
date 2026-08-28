@@ -1,0 +1,11 @@
+{
+  "name": "ROMERO'S CARPENTRY",
+  "short_name": "ROMERO'S CARPENTRY",
+  "description": "Built Right. Built To Last.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070707",
+  "theme_color": "#0b0b0b",
+  "icons": []
+}
+
