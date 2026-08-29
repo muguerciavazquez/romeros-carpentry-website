@@ -15,7 +15,7 @@ Client slogan: Built Right. Built To Last.
 - Previous logo files are still in `assets/` for reference only.
 - The full ROMERO'S CARPENTRY logo is stored in `assets/romeros-carpentry-logo.png`.
 - The header uses the cropped symbol logo at `assets/romeros-carpentry-symbol.png`.
-- Real bathroom before-and-after photos are stored in `assets/` and used in the transformation and gallery sections.
+- Real bathroom before-and-after photos and exterior dormer project photos are stored in `assets/` and used in the transformation and gallery sections.
 - SEO support files included: `robots.txt`, `sitemap.xml`, and `site.webmanifest`.
 
 ## Next Build Priorities
