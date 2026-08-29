@@ -179,7 +179,7 @@
 
     .quote-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(340px, .75fr); gap: 18px; align-items: start; }
     .booking-layout { display: grid; grid-template-columns: minmax(0, .75fr) minmax(340px, .9fr); gap: 18px; align-items: stretch; }
-    .booking-card, .chat-preview {
+    .booking-card, .chat-preview, .booking-embed {
       border: 1px solid var(--white-line);
       background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
       border-radius: var(--radius);
@@ -191,6 +191,9 @@
     .booking-step strong { display: grid; place-items: center; width: 34px; height: 34px; border-radius: var(--radius); background: var(--gold-2); color: #111; }
     .calendar-box { min-height: 360px; display: grid; place-items: center; text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); background: rgba(0,0,0,.18); padding: 24px; }
     .calendar-box p { color: var(--muted); }
+    .booking-embed { padding: 12px; min-height: 640px; display: grid; gap: 12px; grid-template-rows: minmax(520px, 1fr) auto; }
+    .booking-embed iframe { width: 100%; height: 100%; min-height: 520px; border: 0; border-radius: var(--radius); background: #fff; }
+    .booking-embed .btn { width: 100%; }
     .chat-preview { display: flex; flex-direction: column; gap: 12px; }
     .chat-line { max-width: 88%; padding: 12px 14px; border-radius: var(--radius); background: rgba(255,255,255,.06); color: var(--muted); }
     .chat-line.customer { margin-left: auto; background: rgba(214,171,77,.18); color: var(--text); }
@@ -502,26 +505,27 @@
     <section class="brand-watermark" id="booking">
       <div class="container booking-layout">
         <article class="booking-card">
-          <span class="eyebrow">Ask + Schedule</span>
-          <h2>No waiting to book a consultation.</h2>
-          <p>Visitors can ask quick remodeling questions in the chat box, then schedule a consultation directly from the website through a Google Calendar appointment link.</p>
+          <span class="eyebrow">Book Online</span>
+          <h2>Choose your free estimate spot.</h2>
+          <p>Pick an available Monday-Friday consultation time directly from ROMERO'S CARPENTRY's Google Calendar booking page.</p>
           <div class="booking-steps">
-            <div class="booking-step"><strong>1</strong><span>Ask about services, service areas, timelines, or what to prepare before an estimate.</span></div>
-            <div class="booking-step"><strong>2</strong><span>Choose a time through Google Calendar appointment scheduling.</span></div>
-            <div class="booking-step"><strong>3</strong><span>Send project details so ROMERO'S CARPENTRY can follow up prepared.</span></div>
+            <div class="booking-step"><strong>1</strong><span>Select a 90-minute consultation slot between 8:00 AM and 1:30 PM.</span></div>
+            <div class="booking-step"><strong>2</strong><span>Add your contact information and project details in the booking form.</span></div>
+            <div class="booking-step"><strong>3</strong><span>Check your email for the Google Calendar confirmation.</span></div>
           </div>
           <div class="hero-actions">
-            <a class="btn btn-primary" data-calendar-link href="https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ROMEROS_CARPENTRY_BOOKING_LINK" target="_blank" rel="noopener">Schedule on Google Calendar</a>
+            <a class="btn btn-primary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Open Booking Page</a>
             <button class="btn btn-secondary" type="button" data-open-chat>Ask a Question</button>
           </div>
-          <p class="fine-print">Replace the placeholder calendar URL with the client's real Google Calendar appointment schedule link.</p>
+          <p class="fine-print">If the calendar does not load below, use the Open Booking Page button.</p>
         </article>
-        <aside class="chat-preview" aria-label="Customer chat preview">
-          <div class="chat-line">Hi, I can help with common remodeling questions before you book.</div>
-          <div class="chat-line customer">Do you remodel bathrooms in Jacksonville?</div>
-          <div class="chat-line">Yes. ROMERO'S CARPENTRY handles bathroom remodels in Jacksonville and nearby communities. You can schedule a free estimate when you are ready.</div>
-          <div class="chat-line customer">What should I prepare?</div>
-          <div class="chat-line">Photos of the current space, your city, project goals, preferred timeline, and any inspiration images are helpful.</div>
+        <aside class="booking-embed" aria-label="Google Calendar booking page">
+          <iframe
+            title="Book a free remodeling estimate with ROMERO'S CARPENTRY"
+            src="https://calendar.app.google/Rxy2qoWPBhW81quF6"
+            loading="lazy"
+          ></iframe>
+          <a class="btn btn-secondary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Open Calendar in a New Tab</a>
         </aside>
       </div>
     </section>
@@ -632,7 +636,7 @@
   </div>
 
   <script>
-    const calendarUrl = 'https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ROMEROS_CARPENTRY_BOOKING_LINK';
+    const calendarUrl = 'https://calendar.app.google/Rxy2qoWPBhW81quF6';
     const root = document.documentElement;
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const savedTheme = localStorage.getItem('romeros-carpentry-theme') || 'dark';
@@ -712,7 +716,7 @@
       services: "ROMERO'S CARPENTRY can help with kitchen remodeling, bathroom remodeling, flooring, fireplace feature walls, interior renovations, and custom home upgrades.",
       areas: "ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.",
       prepare: 'Helpful details include photos of the current space, your city, project type, rough timeline, budget range, and inspiration images.',
-      schedule: "You can schedule directly through the Google Calendar appointment link. Replace the placeholder URL with the official ROMERO'S CARPENTRY booking calendar before launch.",
+      schedule: "You can schedule directly through ROMERO'S CARPENTRY's Google Calendar booking page. Pick a Monday-Friday estimate slot and the team will receive the booking details.",
       estimate: 'Free estimates are available. You can use the quote form, call (904) 729-2379, or schedule through the calendar link.',
       timeline: 'Timelines depend on project scope, materials, and availability. A quick consultation is the best way to set expectations.',
       cost: 'Project cost depends on scope, materials, layout changes, and finish level. The estimate request helps the team understand the project before quoting.'
