@@ -165,8 +165,10 @@
     .filter { border: 1px solid var(--white-line); background: rgba(255,255,255,.04); color: var(--text); min-height: 40px; padding: 8px 12px; border-radius: var(--radius); font-weight: 800; }
     .filter.active { background: var(--gold-2); color: #111; border-color: transparent; }
     .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .project-card { overflow: hidden; border: 1px solid var(--white-line); border-radius: var(--radius); background: var(--surface); }
-    .project-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .project-card { position: relative; overflow: hidden; border: 1px solid var(--white-line); border-radius: var(--radius); background: var(--surface); }
+    .project-card img, .project-card video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #050505; }
+    .project-tag { position: absolute; left: 12px; top: 12px; z-index: 2; border-radius: var(--radius); padding: 6px 10px; background: rgba(5,5,5,.78); color: var(--gold-2); border: 1px solid rgba(227,189,125,.42); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .project-tag.after { background: rgba(227,189,125,.92); color: #111; border-color: transparent; }
     .project-card div { padding: 18px; }
     .project-card h3 { margin: 0 0 4px; }
     .project-card p { margin: 0; color: var(--muted); }
@@ -401,8 +403,8 @@
     <section id="transformation">
       <div class="container split">
         <div class="compare" data-compare>
-          <img src="./assets/bathroom-after-1.jpeg" alt="Finished bathroom remodel with white tile, black framed glass, tub, and built-in niche" />
-          <img class="before" data-before src="./assets/bathroom-before-1.jpeg" alt="Bathroom tub surround during prep before tile installation" />
+          <img src="./assets/bathroom-2-after.jpeg" alt="Finished bathroom remodel with double vanity, shiplap wall, mirrors, sconces, and glass shower" />
+          <img class="before" data-before src="./assets/bathroom-2-before.jpeg" alt="Bathroom vanity wall before final finishes with cabinets and shiplap installed" />
           <span class="label before-label">Before</span>
           <span class="label after-label">After</span>
           <span class="compare-line" data-line></span>
@@ -412,13 +414,13 @@
           <div>
             <span class="eyebrow">Before + After</span>
             <h2>Real bathroom transformation proof.</h2>
-            <p>This bathroom project shows the work from wall prep through a finished tub surround with white tile, black trim, glass doors, updated flooring, vanity, and fixtures.</p>
+            <p>This bathroom project shows the transformation from cabinet and wall prep to a finished double vanity, shiplap feature wall, glass shower, lighting, mirrors, and clean modern finishes.</p>
           </div>
           <div class="metrics">
-            <div class="metric"><strong>Before</strong><span>Wall prep and moisture-resistant board</span></div>
-            <div class="metric"><strong>Tile</strong><span>Clean white layout with black grout lines</span></div>
-            <div class="metric"><strong>Finish</strong><span>Glass door, fixtures, flooring, and vanity</span></div>
-            <div class="metric"><strong>Ready</strong><span>Built to help homeowners picture the result</span></div>
+            <div class="metric"><strong>Before</strong><span>Cabinet and feature wall prep</span></div>
+            <div class="metric"><strong>Vanity</strong><span>Double sinks with long counter space</span></div>
+            <div class="metric"><strong>Lighting</strong><span>Mirrors and warm wall sconces</span></div>
+            <div class="metric"><strong>Finish</strong><span>Glass shower and clean modern trim</span></div>
           </div>
         </article>
       </div>
@@ -487,15 +489,16 @@
           <button class="filter" type="button" data-filter="fireplace">Fireplaces</button>
         </div>
         <div class="gallery-grid">
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-before-1.jpeg" alt="Bathroom before tile installation with tub surround prep complete" loading="lazy" /><div><h3>Bathroom before: tub surround prep</h3><p>Moisture-resistant wall board, taped seams, and layout preparation before tile installation.</p></div></article>
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-before-2.jpeg" alt="Bathroom before finish stage with wall prep and floor prep underway" loading="lazy" /><div><h3>Bathroom before: wall and floor prep</h3><p>Early-stage surface preparation before finish materials, fixtures, and flooring were completed.</p></div></article>
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-after-1.jpeg" alt="Finished bathroom tub surround with white tile and black framed glass door" loading="lazy" /><div><h3>Bathroom after: tiled tub surround</h3><p>White tile, black trim details, built-in niche, matching hardware, and glass door installation.</p></div></article>
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-after-2.jpeg" alt="Completed bathroom remodel with vanity, lighting, flooring, toilet, and tub surround" loading="lazy" /><div><h3>Bathroom after: completed remodel</h3><p>Finished bathroom with updated flooring, vanity, lighting, trim, tub surround, and fixtures.</p></div></article>
+          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-before.jpeg" alt="Bathroom before final finishes with vanity cabinets and shiplap wall installed" loading="lazy" /><div><h3>Bathroom before: vanity wall prep</h3><p>Cabinet layout, shiplap wall, lighting locations, and shower area before final finishes.</p></div></article>
+          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-after.jpeg" alt="Finished bathroom with double vanity, mirrors, sconces, glass shower, and modern finishes" loading="lazy" /><div><h3>Bathroom after: completed vanity and shower</h3><p>Finished double vanity, mirrors, wall sconces, glass shower, countertops, and clean trim work.</p></div></article>
           <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-before-1.jpeg" alt="Exterior dormer before finish carpentry with older siding and trim removed" loading="lazy" /><div><h3>Exterior dormers before: prep stage</h3><p>Dormer surfaces prepared for exterior carpentry repairs, trim work, and new finish materials.</p></div></article>
           <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-before-2.jpeg" alt="Exterior dormers before with repair areas visible on upper roofline" loading="lazy" /><div><h3>Exterior dormers before: repair areas</h3><p>Upper dormer sections prepared for new wood cladding and cleaner exterior detailing.</p></div></article>
           <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-after-1.jpeg" alt="Finished exterior dormers with new natural wood cladding around windows" loading="lazy" /><div><h3>Exterior dormers after: finished front view</h3><p>New wood cladding and trim details give the dormers a stronger, cleaner exterior finish.</p></div></article>
           <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-after-2.jpeg" alt="Close-up of finished exterior dormer wood cladding and window trim" loading="lazy" /><div><h3>Exterior dormers after: detail view</h3><p>Close-up finish work around the dormer window, siding lines, and exterior trim.</p></div></article>
-          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-remodel.png" alt="Modern kitchen remodel with white cabinets and warm wood island" loading="lazy" /><div><h3>Kitchen remodel concept</h3><p>Cabinets, counters, lighting, island, and warm finish coordination.</p></div></article>
+          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/before-1.jpeg" alt="Kitchen before remodel with older cabinets, island, counters, and flooring" loading="lazy" /><span class="project-tag">Before</span><div><h3>Kitchen before: original layout</h3><p>Existing cabinets, counters, lighting, island, and flooring before the new finish package.</p></div></article>
+          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/before-2.jpeg" alt="Kitchen before remodel viewed from the living area with older cabinetry and counters" loading="lazy" /><span class="project-tag">Before</span><div><h3>Kitchen before: living area view</h3><p>Original kitchen connection to the nearby living space before the updated cabinetry and finish work.</p></div></article>
+          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/after-1.jpeg" alt="Finished kitchen remodel with gray cabinets, white counters, lighting, backsplash, and range hood" loading="lazy" /><span class="project-tag after">After</span><div><h3>Kitchen after: finished cabinetry</h3><p>Updated cabinets, counters, backsplash, hood detail, hardware, lighting, and clean modern finishes.</p></div></article>
+          <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-1/after-video.mp4" type="video/mp4" /></video><span class="project-tag after">After Video</span><div><h3>Kitchen after: final walkthrough</h3><p>Video view of the completed kitchen so homeowners can see the finished space more clearly.</p></div></article>
           <article class="project-card" data-project="fireplace"><img src="./assets/hero-after.png" alt="Custom fireplace wall remodel with bright paneling and wood mantle" loading="lazy" /><div><h3>Fireplace feature wall</h3><p>Custom focal-point wall designed to change the feel of the living room.</p></div></article>
         </div>
       </div>
