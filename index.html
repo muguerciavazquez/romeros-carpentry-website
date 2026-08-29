@@ -424,6 +424,32 @@
       </div>
     </section>
 
+    <section id="exterior-transformation">
+      <div class="container split">
+        <article class="story-panel">
+          <div>
+            <span class="eyebrow">Exterior Before + After</span>
+            <h2>Dormers rebuilt with clean exterior detail.</h2>
+            <p>This exterior dormer project shows the upper roofline before repair and the finalized wood cladding around the windows for a stronger, cleaner curb-appeal finish.</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>Prep</strong><span>Old surfaces opened for repair</span></div>
+            <div class="metric"><strong>Wood</strong><span>New cladding and trim details</span></div>
+            <div class="metric"><strong>Windows</strong><span>Clean lines around dormer frames</span></div>
+            <div class="metric"><strong>Exterior</strong><span>Improved roofline presentation</span></div>
+          </div>
+        </article>
+        <div class="compare" data-compare>
+          <img src="./assets/exterior-dormers-after-1.jpeg" alt="Finished exterior dormers with new natural wood cladding and window trim" />
+          <img class="before" data-before src="./assets/exterior-dormers-before-2.jpeg" alt="Exterior dormers before repair with visible prep areas around the windows" />
+          <span class="label before-label">Before</span>
+          <span class="label after-label">After</span>
+          <span class="compare-line" data-line></span>
+          <input data-slider type="range" min="8" max="92" value="50" aria-label="Compare before and after exterior dormer project" />
+        </div>
+      </div>
+    </section>
+
     <section class="light-band" id="areas">
       <div class="container">
         <div class="section-head">
@@ -669,13 +695,15 @@
       link.addEventListener('click', () => nav?.classList.remove('open'));
     });
 
-    const slider = document.querySelector('[data-slider]');
-    const before = document.querySelector('[data-before]');
-    const line = document.querySelector('[data-line]');
-    slider?.addEventListener('input', (event) => {
-      const value = event.target.value;
-      before.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-      line.style.left = `${value}%`;
+    document.querySelectorAll('[data-compare]').forEach((compare) => {
+      const slider = compare.querySelector('[data-slider]');
+      const before = compare.querySelector('[data-before]');
+      const line = compare.querySelector('[data-line]');
+      slider?.addEventListener('input', (event) => {
+        const value = event.target.value;
+        before.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+        line.style.left = `${value}%`;
+      });
     });
 
     const filters = document.querySelectorAll('[data-filter]');
