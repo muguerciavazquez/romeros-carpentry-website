@@ -15,13 +15,13 @@ Client slogan: Built Right. Built To Last.
 - Previous logo files are still in `assets/` for reference only.
 - The full ROMERO'S CARPENTRY logo is stored in `assets/romeros-carpentry-logo.png`.
 - The header uses the cropped symbol logo at `assets/romeros-carpentry-symbol.png`.
-- Temporary generated visuals are stored in `assets/` until the client provides real project photos.
+- Real bathroom before-and-after photos are stored in `assets/` and used in the transformation and gallery sections.
 - SEO support files included: `robots.txt`, `sitemap.xml`, and `site.webmanifest`.
 
 ## Next Build Priorities
 
 1. In Netlify, enable form notifications for `estimate-request` and send submissions to `info@romeroscarpentry.com`.
-2. Replace temporary generated visuals with real ROMERO'S CARPENTRY project photos.
+2. Replace remaining temporary generated visuals with additional real ROMERO'S CARPENTRY project photos.
 3. Expand service-area blocks into dedicated SEO landing pages.
 4. Add verified Google review content after client approval.
 5. Replace the logo image with a transparent SVG or PNG when available for the cleanest production header.
