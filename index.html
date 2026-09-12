@@ -167,11 +167,39 @@
       background: radial-gradient(circle at 42% 12%, rgba(227,189,125,.22), transparent 24rem), #0b0b0d;
       box-shadow: var(--shadow);
       touch-action: none;
+      cursor: grab;
     }
+    .design-scene:active { cursor: grabbing; }
     .design-scene canvas { width: 100%; height: 100%; display: block; }
     .scene-label { position: absolute; left: 16px; top: 16px; z-index: 2; display: grid; gap: 3px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); background: rgba(5,5,5,.72); backdrop-filter: blur(12px); }
     .scene-label strong { color: var(--gold-2); line-height: 1.1; }
     .scene-label span { color: var(--muted); font-size: 13px; }
+    .material-popup { position: absolute; right: 16px; bottom: 16px; z-index: 3; width: min(390px, calc(100% - 32px)); border: 1px solid rgba(227,189,125,.38); border-radius: var(--radius); background: rgba(8,8,9,.9); backdrop-filter: blur(14px); box-shadow: 0 18px 48px rgba(0,0,0,.34); padding: 14px; }
+    .material-popup[hidden] { display: none; }
+    .material-popup h3 { margin: 0 26px 6px 0; color: var(--gold-2); font-size: 17px; line-height: 1.15; }
+    .material-popup p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .material-popup > button { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255,255,255,.06); color: var(--text); font-weight: 900; }
+    .swatch-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .material-swatch { min-height: 70px; display: flex; align-items: end; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius); background: var(--swatch); color: #fff; font-size: 12px; font-weight: 900; text-align: left; text-shadow: 0 1px 8px rgba(0,0,0,.8); padding: 0; cursor: pointer; }
+    .material-swatch span { width: 100%; padding: 24px 8px 8px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.72)); }
+    .material-swatch small { display: block; color: rgba(255,255,255,.78); font-size: 10px; font-weight: 800; margin-top: 2px; text-transform: uppercase; letter-spacing: .08em; }
+    .material-sample { position: absolute; inset: 16px; z-index: 4; display: grid; place-items: center; padding: 18px; background: rgba(0,0,0,.56); backdrop-filter: blur(8px); }
+    .material-sample[hidden] { display: none; }
+    .sample-card { position: relative; width: min(560px, 100%); border: 1px solid rgba(227,189,125,.42); border-radius: var(--radius); background: rgba(10,10,10,.95); box-shadow: var(--shadow); overflow: hidden; }
+    .sample-preview { min-height: 320px; display: grid; place-items: center; padding: 22px; background: radial-gradient(circle at top, rgba(227,189,125,.18), transparent 21rem), linear-gradient(135deg, #211d17, #0e0d0b); border-bottom: 1px solid var(--white-line); }
+    .sample-board { width: min(390px, 100%); aspect-ratio: 4 / 3; position: relative; border-radius: 5px; background: var(--photo, var(--swatch)); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,.55); box-shadow: 0 24px 46px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.42), inset 0 -14px 22px rgba(0,0,0,.18); overflow: hidden; transform: perspective(900px) rotateX(2deg); }
+    .sample-board::before { content: ""; position: absolute; inset: 0; background: linear-gradient(128deg, rgba(255,255,255,.16), transparent 18%, transparent 78%, rgba(0,0,0,.18)); pointer-events: none; }
+    .sample-board::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.22)); border-top: 1px solid rgba(255,255,255,.18); }
+    .sample-board-label { position: absolute; left: 14px; right: 14px; bottom: 20px; z-index: 2; display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 6px; background: rgba(8,8,8,.76); color: #fff; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+    .sample-board-label small { color: rgba(255,255,255,.72); font-size: 10px; }
+    .sample-display { display: grid; gap: 12px; justify-items: center; width: 100%; }
+    .sample-display::after { content: ""; width: min(340px, 78%); height: 12px; border-radius: 50%; background: rgba(0,0,0,.36); filter: blur(5px); }
+    .sample-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .sample-meta span { border: 1px solid rgba(227,189,125,.26); border-radius: 999px; color: var(--gold-2); background: rgba(227,189,125,.08); padding: 5px 8px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .sample-content { padding: 16px; }
+    .sample-content h3 { margin: 0 36px 6px 0; color: var(--gold-2); font-size: 22px; line-height: 1.15; }
+    .sample-content p { margin: 0; color: var(--muted); font-size: 14px; }
+    .sample-close { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(0,0,0,.58); color: #fff; font-weight: 900; }
     .scene-fallback { position: absolute; inset: auto 16px 16px; z-index: 2; display: none; color: var(--muted); font-size: 13px; }
     .design-scene.is-fallback .scene-fallback { display: block; }
     .scene-note { color: var(--muted); font-size: 13px; margin: 0; }
@@ -273,6 +301,11 @@
       .trust-row, .metrics, .design-points, .form-row { grid-template-columns: 1fr; }
       .service-summary { padding: 16px; gap: 16px; }
       .service-summary p { font-size: 15px; line-height: 1.55; }
+      .material-popup { left: 10px; right: 10px; bottom: 10px; width: auto; max-height: 58%; overflow: auto; }
+      .swatch-row { grid-template-columns: 1fr; }
+      .material-swatch { min-height: 56px; }
+      .material-sample { inset: 10px; padding: 10px; }
+      .sample-preview { min-height: 260px; padding: 14px; }
       .quick-questions { grid-template-columns: 1fr; }
       section { padding: 54px 0; }
       .hero-media img { aspect-ratio: 1 / 1.08; }
@@ -406,8 +439,24 @@
             <canvas data-design-canvas></canvas>
             <div class="scene-label">
               <strong>Interactive 3D example</strong>
-              <span>Drag to rotate. Scroll to zoom.</span>
+              <span>Drag to rotate. Tap parts for options.</span>
             </div>
+            <article class="material-popup" data-material-popup hidden aria-live="polite">
+              <button type="button" data-material-close aria-label="Close material details">x</button>
+              <h3 data-material-title>Kitchen detail</h3>
+              <p data-material-text></p>
+              <div class="swatch-row" data-material-swatches></div>
+            </article>
+            <article class="material-sample" data-material-sample hidden aria-live="polite">
+              <div class="sample-card">
+                <button class="sample-close" type="button" data-sample-close aria-label="Close material sample">x</button>
+                <div class="sample-preview" data-sample-preview></div>
+                <div class="sample-content">
+                  <h3 data-sample-title>Material sample</h3>
+                  <p data-sample-text></p>
+                </div>
+              </div>
+            </article>
             <p class="scene-fallback">The interactive preview could not load in this browser, but the live site can still show the 3D design example when WebGL is available.</p>
           </div>
           <p class="scene-note">The 3D design preview helps customers approve the plan before materials are ordered and work starts.</p>
@@ -666,6 +715,16 @@
 
     const designScene = document.querySelector('[data-design-scene]');
     const designCanvas = document.querySelector('[data-design-canvas]');
+    const materialPopup = document.querySelector('[data-material-popup]');
+    const materialTitle = document.querySelector('[data-material-title]');
+    const materialText = document.querySelector('[data-material-text]');
+    const materialSwatches = document.querySelector('[data-material-swatches]');
+    const materialClose = document.querySelector('[data-material-close]');
+    const materialSample = document.querySelector('[data-material-sample]');
+    const samplePreview = document.querySelector('[data-sample-preview]');
+    const sampleTitle = document.querySelector('[data-sample-title]');
+    const sampleText = document.querySelector('[data-sample-text]');
+    const sampleClose = document.querySelector('[data-sample-close]');
     if (designScene && designCanvas && window.THREE) {
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0x0b0b0d);
@@ -678,14 +737,383 @@
       const room = new THREE.Group();
       scene.add(room);
 
+      const makeTexture = (draw, repeatX = 1, repeatY = 1) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        draw(ctx, canvas.width, canvas.height);
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(repeatX, repeatY);
+        return texture;
+      };
+      const woodTexture = makeTexture((ctx, width, height) => {
+        ctx.fillStyle = '#a97845';
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < 34; i += 1) {
+          const y = i * 16 + Math.sin(i) * 5;
+          ctx.strokeStyle = i % 3 === 0 ? 'rgba(77,45,22,.34)' : 'rgba(239,195,131,.22)';
+          ctx.lineWidth = i % 4 === 0 ? 5 : 2;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          for (let x = 0; x <= width; x += 32) ctx.lineTo(x, y + Math.sin((x + i * 9) / 46) * 10);
+          ctx.stroke();
+        }
+      }, 3, 2);
+      const marbleTexture = makeTexture((ctx, width, height) => {
+        ctx.fillStyle = '#f8f6ef';
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < 16; i += 1) {
+          ctx.strokeStyle = i % 2 ? 'rgba(156,150,138,.36)' : 'rgba(199,181,145,.28)';
+          ctx.lineWidth = i % 3 === 0 ? 3 : 1.4;
+          ctx.beginPath();
+          const startY = i * 34 - 60;
+          ctx.moveTo(-20, startY);
+          for (let x = 0; x <= width + 40; x += 36) ctx.lineTo(x, startY + x * 0.32 + Math.sin((x + i * 25) / 35) * 18);
+          ctx.stroke();
+        }
+      }, 2, 1);
+      const tileTexture = makeTexture((ctx, width, height) => {
+        ctx.fillStyle = '#e7dfd2';
+        ctx.fillRect(0, 0, width, height);
+        ctx.strokeStyle = 'rgba(143,132,116,.45)';
+        ctx.lineWidth = 4;
+        for (let y = 0; y <= height; y += 82) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+        for (let x = 0; x <= width; x += 128) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+      }, 3, 2);
+      const cabinetTexture = makeTexture((ctx, width, height) => {
+        ctx.fillStyle = '#899184';
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < 18; i += 1) {
+          ctx.strokeStyle = 'rgba(255,255,255,.08)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(i * 30, 0);
+          ctx.lineTo(i * 30 + Math.sin(i) * 18, height);
+          ctx.stroke();
+        }
+      }, 2, 2);
+
+      const materialDetails = {
+        cabinets: {
+          title: 'Cabinet design',
+          text: 'Popular remodeling choices include warm wood, off-white shaker, slim shaker, and muted green or blue lower cabinets.',
+          swatches: [
+            ['Medium wood', 'linear-gradient(120deg, #6f482a, #c49158 42%, #7b4b28 45%, #d7a46a)'],
+            ['Off-white shaker', 'linear-gradient(135deg, #f6f0e6, #d8cdbd 46%, #fffaf0 48%, #cfc2ae)'],
+            ['Sage green', 'linear-gradient(135deg, #5f6f5f, #91a087 50%, #465845)'],
+            ['Navy lower cabinets', 'linear-gradient(135deg, #15263a, #294766 52%, #0c1725)']
+          ]
+        },
+        counters: {
+          title: 'Countertops',
+          text: 'Quartz remains a common durable option, with quartzite, granite, and wood island accents used for a warmer custom look.',
+          swatches: [
+            ['White quartz', 'linear-gradient(135deg, #fff, #e7e1d7 45%, #b8afa3 47%, #faf8f2)'],
+            ['Veined quartzite', 'linear-gradient(120deg, #efe7d8, #bda77f 34%, #f8f5ed 36%, #8f8170 38%, #fff)'],
+            ['Granite look', 'radial-gradient(circle at 20% 20%, #f5f0e6 0 3px, transparent 4px), radial-gradient(circle at 70% 55%, #40382f 0 2px, transparent 3px), linear-gradient(135deg, #9f9a8e, #ddd4c7)'],
+            ['Wood island top', 'linear-gradient(90deg, #7d4f2d, #c58d54 22%, #845432 24%, #d4a16a 52%, #6f4328)']
+          ]
+        },
+        backsplash: {
+          title: 'Backsplash',
+          text: 'Customers often compare ceramic or porcelain tile, handmade-look tile, and slab backsplash panels behind the range.',
+          swatches: [
+            ['Ceramic subway', 'repeating-linear-gradient(0deg, #d6cbbc 0 2px, transparent 2px 24px), repeating-linear-gradient(90deg, #d6cbbc 0 2px, #f0e8dc 2px 54px)'],
+            ['Porcelain tile', 'linear-gradient(135deg, #cfc7ba, #f2eee5 45%, #b9afa0 46%, #e0d7ca)'],
+            ['Zellige look', 'radial-gradient(circle at 35% 35%, rgba(255,255,255,.55), transparent 28%), linear-gradient(135deg, #9eb0a8, #d6ddd6)'],
+            ['Slab backsplash', 'linear-gradient(120deg, #f8f6ef, #b9afa0 28%, #fff 30%, #d9d0c2 33%, #f8f6ef)']
+          ]
+        },
+        flooring: {
+          title: 'Flooring',
+          text: 'Warm wood-look flooring, luxury vinyl plank, neutral porcelain tile, and waterproof surfaces are practical kitchen options.',
+          swatches: [
+            ['Warm oak plank', 'repeating-linear-gradient(90deg, #704928 0 4px, #b9824f 4px 64px, #875530 64px 68px)'],
+            ['Natural LVP', 'repeating-linear-gradient(90deg, #a97945 0 5px, #d0a06a 5px 76px, #8c5a33 76px 80px)'],
+            ['Neutral tile', 'repeating-linear-gradient(0deg, #9f978d 0 2px, transparent 2px 48px), repeating-linear-gradient(90deg, #9f978d 0 2px, #c8beb1 2px 48px)'],
+            ['Dark plank', 'repeating-linear-gradient(90deg, #2f241d 0 5px, #60412c 5px 70px, #241913 70px 75px)']
+          ]
+        },
+        appliances: {
+          title: 'Appliances',
+          text: 'Stainless, black stainless, panel-ready, and built-in appliance layouts can be reviewed in the 3D plan before ordering.',
+          swatches: [
+            ['Stainless', 'repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 5px), linear-gradient(105deg, #747775, #d9dbd8 34%, #979b98 48%, #eeeeea 60%, #6d706e)'],
+            ['Black stainless', 'repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 5px), linear-gradient(135deg, #060606, #383838 38%, #111 62%, #2a2a2a)'],
+            ['Panel-ready', 'linear-gradient(135deg, #7f897d, #5f675e 45%, #a7ad9f)'],
+            ['Matte black', 'linear-gradient(135deg, #0c0c0c, #2d2d2d 50%, #080808)']
+          ]
+        },
+        fixtures: {
+          title: 'Sink and faucet',
+          text: 'Common choices include undermount sinks, farmhouse sinks, pull-down faucets, brushed brass, matte black, and stainless finishes.',
+          swatches: [
+            ['Stainless', 'repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 5px), linear-gradient(105deg, #747775, #d9dbd8 34%, #979b98 48%, #eeeeea 60%, #6d706e)'],
+            ['Brushed brass', 'repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 6px), linear-gradient(105deg, #8f642f, #e6bd6d 35%, #aa762f 50%, #d8b260 68%, #6d491d)'],
+            ['Matte black', 'linear-gradient(135deg, #070707, #303030 50%, #111)'],
+            ['White fireclay', 'linear-gradient(135deg, #fffaf2, #ddd6ca 58%, #ffffff)']
+          ]
+        },
+        lighting: {
+          title: 'Lighting',
+          text: 'Layered lighting usually combines recessed lights, pendants over the island, under-cabinet lighting, and warm dimmable bulbs.',
+          swatches: [
+            ['Warm LED', 'radial-gradient(circle at center, #fff3bd, #d59b45 45%, #5c3a18)'],
+            ['Brass pendants', 'repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 6px), linear-gradient(105deg, #8f642f, #e6bd6d 35%, #aa762f 50%, #d8b260 68%, #6d491d)'],
+            ['Black fixtures', 'linear-gradient(135deg, #050505, #2a2a2a 55%, #080808)'],
+            ['Clear glass', 'radial-gradient(circle at 35% 25%, rgba(255,255,255,.9), transparent 20%), linear-gradient(135deg, #6d9bae, #d7eef5)']
+          ]
+        },
+        hardware: {
+          title: 'Hardware and trim',
+          text: 'Brushed brass, matte black, champagne bronze, and stainless pulls are easy to compare with cabinet colors in 3D.',
+          swatches: [
+            ['Brushed brass', 'repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 6px), linear-gradient(105deg, #8f642f, #e6bd6d 35%, #aa762f 50%, #d8b260 68%, #6d491d)'],
+            ['Matte black', 'linear-gradient(135deg, #070707, #303030 50%, #111)'],
+            ['Champagne bronze', 'linear-gradient(90deg, #8f642f, #d8ad68 48%, #b07b3d)'],
+            ['Stainless', 'repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 5px), linear-gradient(105deg, #747775, #d9dbd8 34%, #979b98 48%, #eeeeea 60%, #6d706e)']
+          ]
+        },
+        storage: {
+          title: 'Storage planning',
+          text: 'Tall pantry cabinets, drawer organizers, pullouts, corner solutions, and island storage can all be planned before work begins.',
+          swatches: [
+            ['Tall pantry', 'linear-gradient(135deg, #879084, #5f675e 48%, #a8b0a4)'],
+            ['Deep drawers', 'repeating-linear-gradient(0deg, #5f675e 0 22px, #323832 22px 25px)'],
+            ['Open shelves', 'repeating-linear-gradient(0deg, #7d4f2d 0 8px, #c58d54 8px 42px)'],
+            ['Built-ins', 'linear-gradient(135deg, #f3ecdf, #b9854e 44%, #efe3d1 47%)']
+          ]
+        },
+        walls: {
+          title: 'Walls and paint',
+          text: 'Wall color sets the mood. Popular kitchen choices include warm white, soft greige, plaster-look neutrals, and muted earthy tones.',
+          swatches: [
+            ['Warm white', 'linear-gradient(135deg, #f4efe5, #ded4c3)'],
+            ['Soft greige', 'linear-gradient(135deg, #beb4a6, #ebe4d8 54%, #a89d90)'],
+            ['Limewash look', 'radial-gradient(circle at 30% 30%, rgba(255,255,255,.5), transparent 25%), linear-gradient(135deg, #d8cfbf, #aaa092)'],
+            ['Earthy clay', 'linear-gradient(135deg, #a36d4c, #d0a17f 55%, #80553c)']
+          ]
+        },
+        windows: {
+          title: 'Windows and natural light',
+          text: 'Window size, trim color, and glass placement help brighten the design and make the kitchen feel larger.',
+          swatches: [
+            ['White trim', 'linear-gradient(135deg, #fffaf0, #d8d2c8)'],
+            ['Wood trim', 'linear-gradient(90deg, #704928, #c58d54 45%, #80502d)'],
+            ['Black frame', 'linear-gradient(135deg, #050505, #2b2b2b 56%, #111)'],
+            ['Clear glass', 'radial-gradient(circle at 35% 25%, rgba(255,255,255,.9), transparent 20%), linear-gradient(135deg, #6d9bae, #d7eef5)']
+          ]
+        },
+        trim: {
+          title: 'Trim and finish carpentry',
+          text: 'Baseboards, crown, window casing, and cabinet trim are the finish details that make a remodel feel custom.',
+          swatches: [
+            ['Painted trim', 'linear-gradient(135deg, #f6f0e6, #cfc7ba)'],
+            ['Natural wood trim', 'linear-gradient(90deg, #7d4f2d, #c58d54 45%, #6f4328)'],
+            ['Slim modern trim', 'linear-gradient(135deg, #1a1a1a, #4a4a4a 55%, #111)'],
+            ['Crown detail', 'repeating-linear-gradient(0deg, #b9854e 0 10px, #7d4f2d 10px 14px)']
+          ]
+        },
+        seating: {
+          title: 'Island seating',
+          text: 'Island seating can be planned with the right overhang, walkway clearance, stool style, and lighting above.',
+          swatches: [
+            ['Wood stools', 'linear-gradient(90deg, #7d4f2d, #c58d54 45%, #6f4328)'],
+            ['Upholstered seats', 'linear-gradient(135deg, #d8d0c0, #8a8174 54%, #f2eadc)'],
+            ['Black metal', 'linear-gradient(135deg, #050505, #2b2b2b 56%, #111)'],
+            ['Brass accents', 'linear-gradient(90deg, #7d5a24, #f2ce7b 45%, #a87931 50%, #d8b260)']
+          ]
+        },
+        styling: {
+          title: 'Decor and styling',
+          text: 'Small styling details such as shelves, bowls, greenery, and cutting boards help customers picture the finished space.',
+          swatches: [
+            ['Open shelf decor', 'linear-gradient(135deg, #b9854e, #efe3d1 48%, #7d4f2d)'],
+            ['Greenery', 'linear-gradient(135deg, #476b4c, #9bb68c 52%, #2f4c34)'],
+            ['Wood accents', 'linear-gradient(90deg, #7d4f2d, #c58d54 45%, #6f4328)'],
+            ['Neutral styling', 'linear-gradient(135deg, #f4efe5, #b9afa0 55%, #fffaf0)']
+          ]
+        }
+      };
+      const sampleDescriptions = {
+        'Medium wood': 'A warm natural cabinet finish that adds texture and works well with white counters, brass hardware, and neutral walls.',
+        'Off-white shaker': 'A clean, classic cabinet style that keeps the kitchen bright and pairs well with wood floors and stone counters.',
+        'Sage green': 'A soft green cabinet color that feels current without being too loud, especially with brass or black hardware.',
+        'Navy lower cabinets': 'A deeper cabinet color often used on islands or lower cabinets for contrast with lighter upper cabinets.',
+        'White quartz': 'A durable, low-maintenance countertop look that keeps the kitchen bright and easy to match with most cabinet colors.',
+        'Veined quartzite': 'A more natural stone look with movement and warmth, often used when customers want the counter to feel premium.',
+        'Granite look': 'A practical stone-style option with more pattern variation and strong everyday durability.',
+        'Wood island top': 'A warm accent surface that can make an island feel custom and more furniture-like.',
+        'Ceramic subway': 'A popular backsplash style because it is clean, timeless, and easy to combine with many cabinet colors.',
+        'Porcelain tile': 'A durable backsplash or floor option with many stone-look finishes and strong moisture resistance.',
+        'Zellige look': 'A handmade-style tile look with uneven shine and texture for customers who want more character.',
+        'Slab backsplash': 'A cleaner, high-end backsplash look with fewer grout lines, often matched to the countertop.',
+        'Warm oak plank': 'A warm floor tone that makes the kitchen feel inviting and works well with white, green, or wood cabinets.',
+        'Natural LVP': 'A practical waterproof floor option for busy homes, with a wood-look finish and easier maintenance.',
+        'Neutral tile': 'A durable kitchen floor option that keeps the space bright and works well in Florida homes.',
+        'Dark plank': 'A stronger contrast flooring option that pairs well with light counters and modern trim.',
+        'Stainless': 'A common appliance and fixture finish because it matches many kitchen styles and feels professional.',
+        'Black stainless': 'A darker appliance finish that creates contrast and can look sharp with lighter cabinets.',
+        'Panel-ready': 'An appliance option designed to blend into the cabinet layout for a more built-in custom look.',
+        'Matte black': 'A modern hardware, fixture, or appliance finish that creates clean contrast without too much shine.',
+        'Brushed brass': 'A warm metal finish commonly used for pulls, faucets, and lights to add a premium accent.',
+        'White fireclay': 'A bright sink finish often used for farmhouse-style or clean traditional kitchens.',
+        'Warm LED': 'A lighting temperature that makes wood, stone, and cabinet colors feel warmer and more natural.',
+        'Brass pendants': 'A warm lighting finish that pairs well with wood cabinets, off-white cabinets, and stone counters.',
+        'Black fixtures': 'A crisp lighting or hardware finish that adds contrast and works well in modern kitchens.',
+        'Clear glass': 'A light pendant style that keeps the island area open and does not visually block the room.',
+        'Champagne bronze': 'A softer warm metal finish between brass and bronze, often used for a refined custom look.',
+        'Tall pantry': 'A storage feature that uses vertical space and keeps small appliances, food, and cleaning items organized.',
+        'Deep drawers': 'A practical cabinet upgrade for pots, pans, lids, and everyday kitchen storage.',
+        'Open shelves': 'A decorative storage option for dishes, wood accents, plants, or display pieces.',
+        'Built-ins': 'Custom storage planned around the way the homeowner actually uses the kitchen.',
+        'Warm white': 'A bright wall color that keeps the kitchen open and works with almost any cabinet finish.',
+        'Soft greige': 'A warmer neutral wall color that adds depth without making the room feel dark.',
+        'Limewash look': 'A textured wall finish that gives the kitchen a softer custom-design feel.',
+        'Earthy clay': 'A warmer accent tone for customers who want more character and less plain white.',
+        'White trim': 'A clean trim choice that keeps windows bright and classic.',
+        'Wood trim': 'A warmer trim option that connects the window detail with wood flooring or shelves.',
+        'Black frame': 'A modern window-frame look that adds strong contrast.',
+        'Painted trim': 'A clean finish-carpentry option for baseboards, casing, and crown details.',
+        'Natural wood trim': 'A warmer carpentry finish that adds texture and custom character.',
+        'Slim modern trim': 'A simple trim profile for cleaner modern kitchen designs.',
+        'Crown detail': 'A finish detail that can make cabinets feel more built-in and complete.',
+        'Wood stools': 'A warm seating option that pairs naturally with white counters and wood floors.',
+        'Upholstered seats': 'A softer seating option that makes the island feel more comfortable.',
+        'Black metal': 'A durable modern seating or accent finish with clean contrast.',
+        'Brass accents': 'A warm accent finish often used on lights, stool details, and cabinet hardware.',
+        'Open shelf decor': 'A styling option that helps shelves feel finished without overcrowding the kitchen.',
+        'Greenery': 'A small styling detail that adds color and makes the finished kitchen feel lived-in.',
+        'Wood accents': 'A simple way to bring warmth into a bright kitchen design.',
+        'Neutral styling': 'A clean styling direction that keeps the focus on the remodel details.'
+      };
+      const samplePhotos = {
+        'Medium wood': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Off-white shaker': 'https://www.photos-public-domain.com/wp-content/uploads/2018/06/beige-textured-wall-close-up.jpg',
+        'Sage green': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/sage-green-colored-painted-wall-texture.jpg',
+        'Navy lower cabinets': 'https://www.photos-public-domain.com/wp-content/uploads/2017/11/color-samples-navy-blue.jpg',
+        'White quartz': 'https://festone.co.uk/cdn/shop/files/M0051RESIZE.jpg?v=1694693257&width=1946',
+        'Veined quartzite': 'https://earthstonetexas.com/cdn/shop/files/NordicLeatherCloseUp.jpg?v=1727708386',
+        'Granite look': 'https://www.photos-public-domain.com/wp-content/uploads/2017/03/granite-countertop-texture.jpg',
+        'Wood island top': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Ceramic subway': 'https://www.photos-public-domain.com/wp-content/uploads/2012/01/white-bathroom-tile-with-swirl-pattern-texture.jpg',
+        'Porcelain tile': 'https://www.photos-public-domain.com/wp-content/uploads/2011/12/light-brown-floor-tiles-texture.jpg',
+        'Zellige look': 'https://www.photos-public-domain.com/wp-content/uploads/2012/01/ivory-or-off-white-bathroom-tile-with-swirl-pattern-texture.jpg',
+        'Slab backsplash': 'https://www.photos-public-domain.com/wp-content/uploads/2017/03/marble-slab-texture.jpg',
+        'Warm oak plank': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Natural LVP': 'https://www.photos-public-domain.com/wp-content/uploads/2011/12/light-brown-floor-tiles-texture.jpg',
+        'Neutral tile': 'https://www.photos-public-domain.com/wp-content/uploads/2012/01/ivory-or-off-white-bathroom-tile-with-swirl-pattern-texture.jpg',
+        'Dark plank': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/old-wood-texture.jpg',
+        'Stainless': 'https://www.photos-public-domain.com/wp-content/uploads/2011/01/brushed-metal-texture.jpg',
+        'Black stainless': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/black-metal-cross-grid-texture.jpg',
+        'Panel-ready': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Matte black': 'https://www.photos-public-domain.com/wp-content/uploads/2014/10/black-mesh-with-round-holes-texture.jpg',
+        'Brushed brass': 'https://www.photos-public-domain.com/wp-content/uploads/2011/01/brushed-metal-texture.jpg',
+        'White fireclay': 'https://www.photos-public-domain.com/wp-content/uploads/2012/01/ivory-or-off-white-bathroom-tile-with-swirl-pattern-texture.jpg',
+        'Warm LED': 'https://www.photos-public-domain.com/wp-content/uploads/2017/12/soft-focus-pink-christmas-lights-texture.jpg',
+        'Brass pendants': 'https://www.photos-public-domain.com/wp-content/uploads/2011/01/brushed-metal-texture.jpg',
+        'Black fixtures': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/black-metal-cross-grid-texture.jpg',
+        'Clear glass': 'https://www.photos-public-domain.com/wp-content/uploads/2017/03/ice-patterns-on-frosty-glass.jpg',
+        'Champagne bronze': 'https://www.photos-public-domain.com/wp-content/uploads/2011/01/brushed-metal-texture.jpg',
+        'Tall pantry': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Deep drawers': 'https://www.photos-public-domain.com/wp-content/uploads/2013/01/desk-drawers.jpg',
+        'Open shelves': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Built-ins': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Warm white': 'https://www.photos-public-domain.com/wp-content/uploads/2018/06/beige-textured-wall-close-up.jpg',
+        'Soft greige': 'https://www.photos-public-domain.com/wp-content/uploads/2018/06/beige-textured-wall-close-up.jpg',
+        'Limewash look': 'https://www.photos-public-domain.com/wp-content/uploads/2018/10/ivory-stucco-texture.jpg',
+        'Earthy clay': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/clay-colored-painted-wall-texture.jpg',
+        'White trim': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/white-paint-on-old-window.jpg',
+        'Wood trim': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Black frame': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/black-metal-cross-grid-texture.jpg',
+        'Painted trim': 'https://www.photos-public-domain.com/wp-content/uploads/2018/06/beige-textured-wall-close-up.jpg',
+        'Natural wood trim': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Slim modern trim': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/black-metal-cross-grid-texture.jpg',
+        'Crown detail': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Wood stools': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Upholstered seats': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/khaki-upholstery-fabric-texture.jpg',
+        'Black metal': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/black-metal-cross-grid-texture.jpg',
+        'Brass accents': 'https://www.photos-public-domain.com/wp-content/uploads/2011/01/brushed-metal-texture.jpg',
+        'Open shelf decor': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Greenery': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/green-painted-wall-texture.jpg',
+        'Wood accents': 'https://www.photos-public-domain.com/wp-content/uploads/2011/11/oak-wood-grain-texture-close-up.jpg',
+        'Neutral styling': 'https://www.photos-public-domain.com/wp-content/uploads/2018/06/beige-textured-wall-close-up.jpg'
+      };
+      const sampleMeta = {
+        'Medium wood': ['Cabinet finish', 'Warm tone', 'Popular'],
+        'Off-white shaker': ['Cabinet door', 'Bright finish', 'Classic'],
+        'Sage green': ['Cabinet color', 'Soft accent', 'Modern'],
+        'Navy lower cabinets': ['Cabinet color', 'Contrast', 'Island option'],
+        'White quartz': ['Countertop', 'Low maintenance', 'Bright'],
+        'Veined quartzite': ['Countertop', 'Natural stone look', 'Premium'],
+        'Granite look': ['Countertop', 'Durable', 'Patterned'],
+        'Wood island top': ['Island accent', 'Warm finish', 'Custom look'],
+        'Ceramic subway': ['Backsplash', 'Easy to match', 'Timeless'],
+        'Porcelain tile': ['Tile surface', 'Durable', 'Moisture resistant'],
+        'Zellige look': ['Backsplash', 'Textured', 'Handmade look'],
+        'Slab backsplash': ['Backsplash', 'Fewer grout lines', 'High-end'],
+        'Warm oak plank': ['Flooring', 'Wood-look', 'Warm tone'],
+        'Natural LVP': ['Flooring', 'Waterproof', 'Practical'],
+        'Neutral tile': ['Flooring', 'Porcelain look', 'Florida friendly'],
+        'Dark plank': ['Flooring', 'Contrast', 'Modern'],
+        'Stainless': ['Appliance finish', 'Durable', 'Common'],
+        'Black stainless': ['Appliance finish', 'Contrast', 'Modern'],
+        'Panel-ready': ['Appliance finish', 'Built-in look', 'Custom'],
+        'Matte black': ['Fixture finish', 'Modern', 'Contrast'],
+        'Brushed brass': ['Metal finish', 'Warm accent', 'Premium'],
+        'White fireclay': ['Sink finish', 'Bright', 'Farmhouse style'],
+        'Warm LED': ['Lighting', 'Dimmable', 'Inviting'],
+        'Brass pendants': ['Lighting finish', 'Warm metal', 'Island accent'],
+        'Black fixtures': ['Lighting finish', 'Contrast', 'Clean lines'],
+        'Clear glass': ['Pendant style', 'Open feel', 'Light look'],
+        'Champagne bronze': ['Hardware finish', 'Warm metal', 'Refined'],
+        'Tall pantry': ['Storage', 'Vertical space', 'Organized'],
+        'Deep drawers': ['Storage', 'Pots and pans', 'Functional'],
+        'Open shelves': ['Storage', 'Display', 'Warm accent'],
+        'Built-ins': ['Custom storage', 'Planned fit', 'Carpentry'],
+        'Warm white': ['Wall finish', 'Bright', 'Flexible'],
+        'Soft greige': ['Wall finish', 'Warm neutral', 'Soft contrast'],
+        'Limewash look': ['Wall finish', 'Texture', 'Custom feel'],
+        'Earthy clay': ['Accent color', 'Warm', 'Character'],
+        'White trim': ['Window trim', 'Clean', 'Classic'],
+        'Wood trim': ['Window trim', 'Warm', 'Natural'],
+        'Black frame': ['Window trim', 'Contrast', 'Modern'],
+        'Painted trim': ['Finish carpentry', 'Clean', 'Classic'],
+        'Natural wood trim': ['Finish carpentry', 'Warm', 'Custom'],
+        'Slim modern trim': ['Finish carpentry', 'Minimal', 'Clean'],
+        'Crown detail': ['Finish carpentry', 'Built-in look', 'Premium'],
+        'Wood stools': ['Island seating', 'Warm', 'Practical'],
+        'Upholstered seats': ['Island seating', 'Comfort', 'Soft'],
+        'Black metal': ['Island seating', 'Durable', 'Modern'],
+        'Brass accents': ['Accent finish', 'Warm', 'Premium'],
+        'Open shelf decor': ['Styling', 'Display', 'Finished look'],
+        'Greenery': ['Styling', 'Natural', 'Fresh'],
+        'Wood accents': ['Styling', 'Warmth', 'Texture'],
+        'Neutral styling': ['Styling', 'Clean', 'Simple']
+      };
+
       const materials = {
         wall: new THREE.MeshStandardMaterial({ color: 0xe5ddd0, roughness: 0.82 }),
-        floor: new THREE.MeshStandardMaterial({ color: 0x9b7149, roughness: 0.68 }),
-        cabinet: new THREE.MeshStandardMaterial({ color: 0x879084, roughness: 0.62 }),
-        cabinetDark: new THREE.MeshStandardMaterial({ color: 0x5f675e, roughness: 0.68 }),
+        floor: new THREE.MeshStandardMaterial({ color: 0xffffff, map: woodTexture, roughness: 0.68 }),
+        cabinet: new THREE.MeshStandardMaterial({ color: 0xffffff, map: cabinetTexture, roughness: 0.62 }),
+        cabinetDark: new THREE.MeshStandardMaterial({ color: 0x5f675e, map: cabinetTexture, roughness: 0.68 }),
         counter: new THREE.MeshStandardMaterial({ color: 0xf2eee5, roughness: 0.35 }),
-        marble: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.28 }),
-        tile: new THREE.MeshStandardMaterial({ color: 0xe8e0d5, roughness: 0.5 }),
+        marble: new THREE.MeshStandardMaterial({ color: 0xffffff, map: marbleTexture, roughness: 0.28 }),
+        tile: new THREE.MeshStandardMaterial({ color: 0xffffff, map: tileTexture, roughness: 0.5 }),
         grout: new THREE.MeshStandardMaterial({ color: 0xb9afa0, roughness: 0.8 }),
         wood: new THREE.MeshStandardMaterial({ color: 0xb9854e, roughness: 0.58 }),
         dark: new THREE.MeshStandardMaterial({ color: 0x1b1a18, roughness: 0.55 }),
@@ -695,107 +1123,113 @@
         glass: new THREE.MeshStandardMaterial({ color: 0x8fb7c9, roughness: 0.08, metalness: 0, transparent: true, opacity: 0.45 })
       };
 
-      const addBox = (name, size, position, material) => {
+      const setDetail = (mesh, detailKey) => {
+        if (detailKey && materialDetails[detailKey]) {
+          mesh.userData.detail = materialDetails[detailKey];
+        }
+        return mesh;
+      };
+      const addBox = (name, size, position, material, detailKey = null) => {
         const mesh = new THREE.Mesh(new THREE.BoxGeometry(size[0], size[1], size[2]), material);
         mesh.name = name;
         mesh.position.set(position[0], position[1], position[2]);
         room.add(mesh);
-        return mesh;
+        return setDetail(mesh, detailKey);
       };
-      const addCylinder = (name, radius, height, position, material, rotation = [0, 0, 0]) => {
+      const addCylinder = (name, radius, height, position, material, rotation = [0, 0, 0], detailKey = null) => {
         const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, 28), material);
         mesh.name = name;
         mesh.position.set(position[0], position[1], position[2]);
         mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
         room.add(mesh);
-        return mesh;
+        return setDetail(mesh, detailKey);
       };
 
-      addBox('floor', [6.8, 0.08, 5.2], [0, -0.04, 0], materials.floor);
-      addBox('back wall', [6.8, 3.2, 0.08], [0, 1.56, -2.6], materials.wall);
-      addBox('side wall', [0.08, 3.2, 5.2], [-3.4, 1.56, 0], materials.wall);
-      addBox('ceiling plane', [6.8, 0.06, 5.2], [0, 3.18, 0], materials.wall);
-      addBox('left baseboard', [0.1, 0.16, 5.05], [-3.3, 0.08, -0.02], materials.wood);
-      addBox('back baseboard', [6.65, 0.16, 0.1], [0, 0.08, -2.48], materials.wood);
-      addBox('large window', [1.2, 1.35, 0.04], [-2.6, 1.82, -2.64], materials.glass);
-      addBox('window cross rail', [1.18, 0.035, 0.055], [-2.6, 1.82, -2.58], materials.wood);
-      addBox('window center mullion', [0.035, 1.28, 0.055], [-2.6, 1.82, -2.58], materials.wood);
-      addBox('window top trim', [1.36, 0.07, 0.06], [-2.6, 2.53, -2.6], materials.wood);
-      addBox('window sill', [1.46, 0.08, 0.16], [-2.6, 1.09, -2.52], materials.wood);
-      addBox('base cabinets', [5.4, 0.78, 0.62], [0.1, 0.39, -2.22], materials.cabinet);
-      addBox('countertop', [5.65, 0.12, 0.76], [0.1, 0.84, -2.18], materials.marble);
-      addBox('backsplash', [5.55, 0.72, 0.05], [0.1, 1.24, -2.54], materials.counter);
+      addBox('floor', [6.8, 0.08, 5.2], [0, -0.04, 0], materials.floor, 'flooring');
+      addBox('back wall', [6.8, 3.2, 0.08], [0, 1.56, -2.6], materials.wall, 'walls');
+      addBox('side wall', [0.08, 3.2, 5.2], [-3.4, 1.56, 0], materials.wall, 'walls');
+      addBox('ceiling plane', [6.8, 0.06, 5.2], [0, 3.18, 0], materials.wall, 'walls');
+      addBox('left baseboard', [0.1, 0.16, 5.05], [-3.3, 0.08, -0.02], materials.wood, 'trim');
+      addBox('back baseboard', [6.65, 0.16, 0.1], [0, 0.08, -2.48], materials.wood, 'trim');
+      addBox('large window', [1.2, 1.35, 0.04], [-2.6, 1.82, -2.64], materials.glass, 'windows');
+      addBox('window cross rail', [1.18, 0.035, 0.055], [-2.6, 1.82, -2.58], materials.wood, 'windows');
+      addBox('window center mullion', [0.035, 1.28, 0.055], [-2.6, 1.82, -2.58], materials.wood, 'windows');
+      addBox('window top trim', [1.36, 0.07, 0.06], [-2.6, 2.53, -2.6], materials.wood, 'trim');
+      addBox('window sill', [1.46, 0.08, 0.16], [-2.6, 1.09, -2.52], materials.wood, 'trim');
+      addBox('base cabinets', [5.4, 0.78, 0.62], [0.1, 0.39, -2.22], materials.cabinet, 'cabinets');
+      addBox('countertop', [5.65, 0.12, 0.76], [0.1, 0.84, -2.18], materials.marble, 'counters');
+      addBox('backsplash', [5.55, 0.72, 0.05], [0.1, 1.24, -2.54], materials.tile, 'backsplash');
       for (let x = -2.55; x <= 2.75; x += 0.46) {
-        addBox('backsplash vertical grout', [0.018, 0.7, 0.058], [x, 1.24, -2.5], materials.grout);
+        addBox('backsplash vertical grout', [0.018, 0.7, 0.058], [x, 1.24, -2.5], materials.grout, 'backsplash');
       }
       for (let y = 0.92; y <= 1.56; y += 0.18) {
-        addBox('backsplash horizontal grout', [5.5, 0.014, 0.058], [0.1, y, -2.5], materials.grout);
+        addBox('backsplash horizontal grout', [5.5, 0.014, 0.058], [0.1, y, -2.5], materials.grout, 'backsplash');
       }
-      addBox('pantry tower', [0.64, 2.12, 0.62], [-3.0, 1.08, -2.2], materials.cabinet);
-      addBox('pantry door panel upper', [0.48, 0.82, 0.035], [-3.0, 1.68, -1.86], materials.cabinetDark);
-      addBox('pantry door panel lower', [0.48, 0.82, 0.035], [-3.0, 0.68, -1.86], materials.cabinetDark);
-      addBox('refrigerator body', [0.76, 1.95, 0.7], [3.0, 0.98, -2.12], materials.stainless);
-      addBox('refrigerator left door', [0.035, 1.72, 0.55], [2.76, 1.02, -1.72], materials.metal);
-      addBox('refrigerator right door', [0.035, 1.72, 0.55], [3.24, 1.02, -1.72], materials.metal);
-      addBox('fridge handles', [0.05, 0.85, 0.035], [2.9, 1.12, -1.44], materials.dark);
-      addBox('upper cabinets left', [1.28, 0.92, 0.46], [-2.05, 1.86, -2.34], materials.cabinet);
-      addBox('upper cabinets right', [1.28, 0.92, 0.46], [2.22, 1.86, -2.34], materials.cabinet);
-      addBox('cabinet crown left', [1.4, 0.12, 0.54], [-2.05, 2.38, -2.34], materials.wood);
-      addBox('cabinet crown right', [1.4, 0.12, 0.54], [2.22, 2.38, -2.34], materials.wood);
-      addBox('range hood chimney', [0.42, 0.78, 0.38], [0.15, 2.26, -2.34], materials.stainless);
-      addBox('range hood canopy', [1.08, 0.24, 0.58], [0.15, 1.86, -2.34], materials.stainless);
-      addBox('range body', [0.88, 0.58, 0.68], [0.15, 0.32, -2.12], materials.dark);
-      addBox('oven glass door', [0.62, 0.36, 0.035], [0.15, 0.36, -1.76], materials.blackGlass);
-      addBox('oven handle', [0.54, 0.035, 0.035], [0.15, 0.6, -1.72], materials.metal);
+      addBox('pantry tower', [0.64, 2.12, 0.62], [-3.0, 1.08, -2.2], materials.cabinet, 'storage');
+      addBox('pantry door panel upper', [0.48, 0.82, 0.035], [-3.0, 1.68, -1.86], materials.cabinetDark, 'storage');
+      addBox('pantry door panel lower', [0.48, 0.82, 0.035], [-3.0, 0.68, -1.86], materials.cabinetDark, 'storage');
+      addBox('refrigerator body', [0.76, 1.95, 0.7], [3.0, 0.98, -2.12], materials.stainless, 'appliances');
+      addBox('refrigerator left door', [0.035, 1.72, 0.55], [2.76, 1.02, -1.72], materials.metal, 'appliances');
+      addBox('refrigerator right door', [0.035, 1.72, 0.55], [3.24, 1.02, -1.72], materials.metal, 'appliances');
+      addBox('fridge handles', [0.05, 0.85, 0.035], [2.9, 1.12, -1.44], materials.dark, 'hardware');
+      addBox('upper cabinets left', [1.28, 0.92, 0.46], [-2.05, 1.86, -2.34], materials.cabinet, 'cabinets');
+      addBox('upper cabinets right', [1.28, 0.92, 0.46], [2.22, 1.86, -2.34], materials.cabinet, 'cabinets');
+      addBox('cabinet crown left', [1.4, 0.12, 0.54], [-2.05, 2.38, -2.34], materials.wood, 'trim');
+      addBox('cabinet crown right', [1.4, 0.12, 0.54], [2.22, 2.38, -2.34], materials.wood, 'trim');
+      addBox('range hood chimney', [0.42, 0.78, 0.38], [0.15, 2.26, -2.34], materials.stainless, 'appliances');
+      addBox('range hood canopy', [1.08, 0.24, 0.58], [0.15, 1.86, -2.34], materials.stainless, 'appliances');
+      addBox('range body', [0.88, 0.58, 0.68], [0.15, 0.32, -2.12], materials.dark, 'appliances');
+      addBox('oven glass door', [0.62, 0.36, 0.035], [0.15, 0.36, -1.76], materials.blackGlass, 'appliances');
+      addBox('oven handle', [0.54, 0.035, 0.035], [0.15, 0.6, -1.72], materials.metal, 'hardware');
       [-0.1, 0.4].forEach((x) => {
-        [-2.28, -1.96].forEach((z) => addCylinder('cooktop burner', 0.12, 0.018, [x, 0.88, z], materials.blackGlass));
+        [-2.28, -1.96].forEach((z) => addCylinder('cooktop burner', 0.12, 0.018, [x, 0.88, z], materials.blackGlass, [0, 0, 0], 'appliances'));
       });
-      addBox('island cabinet', [2.35, 0.82, 1.16], [0.72, 0.41, 0.35], materials.cabinet);
-      addBox('island counter', [2.8, 0.14, 1.5], [0.72, 0.9, 0.35], materials.marble);
-      addBox('island dark accent', [2.38, 0.08, 0.04], [0.72, 0.63, 0.94], materials.cabinetDark);
-      addBox('island side panel', [0.05, 0.68, 1.0], [-0.48, 0.44, 0.35], materials.cabinetDark);
-      addBox('wood beam', [6.2, 0.14, 0.18], [0.1, 2.88, -0.55], materials.wood);
-      addBox('open shelf', [1.24, 0.08, 0.34], [-0.95, 1.7, -2.34], materials.wood);
-      addBox('shelf decor bowl', [0.22, 0.08, 0.18], [-1.18, 1.8, -2.24], materials.metal);
-      addBox('shelf decor frame', [0.2, 0.28, 0.035], [-0.72, 1.87, -2.18], materials.wood);
-      addBox('sink basin', [0.62, 0.08, 0.42], [1.25, 0.98, 0.36], materials.metal);
-      addBox('sink dark opening', [0.48, 0.025, 0.28], [1.25, 1.03, 0.36], materials.blackGlass);
-      addCylinder('faucet neck', 0.035, 0.55, [1.25, 1.2, 0.12], materials.metal, [Math.PI / 2, 0, 0]);
-      addCylinder('faucet stem', 0.035, 0.34, [1.25, 1.08, 0.03], materials.metal);
-      addBox('cutting board', [0.48, 0.035, 0.34], [0.2, 1.01, 0.76], materials.wood);
-      addCylinder('counter vase', 0.09, 0.28, [-0.2, 1.12, -2.06], materials.dark);
-      addBox('counter greenery', [0.3, 0.24, 0.3], [-0.2, 1.38, -2.06], materials.glass);
+      addBox('island cabinet', [2.35, 0.82, 1.16], [0.72, 0.41, 0.35], materials.cabinet, 'cabinets');
+      addBox('island counter', [2.8, 0.14, 1.5], [0.72, 0.9, 0.35], materials.marble, 'counters');
+      addBox('island dark accent', [2.38, 0.08, 0.04], [0.72, 0.63, 0.94], materials.cabinetDark, 'cabinets');
+      addBox('island side panel', [0.05, 0.68, 1.0], [-0.48, 0.44, 0.35], materials.cabinetDark, 'cabinets');
+      addBox('wood beam', [6.2, 0.14, 0.18], [0.1, 2.88, -0.55], materials.wood, 'trim');
+      addBox('open shelf', [1.24, 0.08, 0.34], [-0.95, 1.7, -2.34], materials.wood, 'styling');
+      addBox('shelf decor bowl', [0.22, 0.08, 0.18], [-1.18, 1.8, -2.24], materials.metal, 'styling');
+      addBox('shelf decor frame', [0.2, 0.28, 0.035], [-0.72, 1.87, -2.18], materials.wood, 'styling');
+      addBox('sink basin', [0.62, 0.08, 0.42], [1.25, 0.98, 0.36], materials.metal, 'fixtures');
+      addBox('sink dark opening', [0.48, 0.025, 0.28], [1.25, 1.03, 0.36], materials.blackGlass, 'fixtures');
+      addCylinder('faucet neck', 0.035, 0.55, [1.25, 1.2, 0.12], materials.metal, [Math.PI / 2, 0, 0], 'fixtures');
+      addCylinder('faucet stem', 0.035, 0.34, [1.25, 1.08, 0.03], materials.metal, [0, 0, 0], 'fixtures');
+      addBox('cutting board', [0.48, 0.035, 0.34], [0.2, 1.01, 0.76], materials.wood, 'styling');
+      addCylinder('counter vase', 0.09, 0.28, [-0.2, 1.12, -2.06], materials.dark, [0, 0, 0], 'styling');
+      addBox('counter greenery', [0.3, 0.24, 0.3], [-0.2, 1.38, -2.06], materials.glass, 'styling');
 
       for (let i = 0; i < 5; i += 1) {
         const x = -2.32 + i * 1.15;
-        addBox(`cabinet door ${i}`, [0.82, 0.58, 0.035], [x, 0.42, -1.86], materials.cabinetDark);
-        addBox(`cabinet handle ${i}`, [0.34, 0.035, 0.035], [x, 0.52, -1.82], materials.metal);
+        addBox(`cabinet door ${i}`, [0.82, 0.58, 0.035], [x, 0.42, -1.86], materials.cabinetDark, 'cabinets');
+        addBox(`cabinet handle ${i}`, [0.34, 0.035, 0.035], [x, 0.52, -1.82], materials.metal, 'hardware');
       }
       [-2.25, 2.02].forEach((x) => {
-        addBox('upper cabinet face', [0.96, 0.68, 0.035], [x, 1.86, -2.08], materials.cabinetDark);
-        addBox('upper cabinet handle', [0.035, 0.34, 0.035], [x + 0.34, 1.78, -2.03], materials.metal);
+        addBox('upper cabinet face', [0.96, 0.68, 0.035], [x, 1.86, -2.08], materials.cabinetDark, 'cabinets');
+        addBox('upper cabinet handle', [0.035, 0.34, 0.035], [x + 0.34, 1.78, -2.03], materials.metal, 'hardware');
       });
       [-0.22, 0.72, 1.66].forEach((x) => {
-        addBox('island drawer face', [0.54, 0.26, 0.035], [x, 0.56, 0.96], materials.cabinetDark);
-        addBox('island drawer pull', [0.28, 0.028, 0.035], [x, 0.58, 1.0], materials.metal);
+        addBox('island drawer face', [0.54, 0.26, 0.035], [x, 0.56, 0.96], materials.cabinetDark, 'storage');
+        addBox('island drawer pull', [0.28, 0.028, 0.035], [x, 0.58, 1.0], materials.metal, 'hardware');
       });
       [-0.1, 1.48].forEach((x) => {
-        addCylinder('stool seat', 0.24, 0.08, [x, 0.55, 1.45], materials.wood);
-        addCylinder('stool base', 0.035, 0.5, [x, 0.27, 1.45], materials.metal);
-        addCylinder('stool foot ring', 0.18, 0.018, [x, 0.32, 1.45], materials.metal);
+        addCylinder('stool seat', 0.24, 0.08, [x, 0.55, 1.45], materials.wood, [0, 0, 0], 'seating');
+        addCylinder('stool base', 0.035, 0.5, [x, 0.27, 1.45], materials.metal, [0, 0, 0], 'seating');
+        addCylinder('stool foot ring', 0.18, 0.018, [x, 0.32, 1.45], materials.metal, [0, 0, 0], 'seating');
       });
       [-0.15, 1.6].forEach((x) => {
         const light = new THREE.PointLight(0xffe0aa, 1.1, 4);
         light.position.set(x, 2.58, 0.42);
         scene.add(light);
-        addCylinder('pendant shade', 0.18, 0.24, [x, 2.22, 0.42], materials.metal);
-        addCylinder('pendant cord', 0.012, 0.44, [x, 2.52, 0.42], materials.dark);
+        addCylinder('pendant shade', 0.18, 0.24, [x, 2.22, 0.42], materials.metal, [0, 0, 0], 'lighting');
+        addCylinder('pendant cord', 0.012, 0.44, [x, 2.52, 0.42], materials.dark, [0, 0, 0], 'lighting');
       });
       [-2.2, 0, 2.2].forEach((x) => {
         const light = new THREE.PointLight(0xfff0cf, 0.55, 3);
         light.position.set(x, 3.0, -1.1);
         scene.add(light);
-        addCylinder('recessed light trim', 0.12, 0.02, [x, 3.12, -1.1], materials.metal);
+        addCylinder('recessed light trim', 0.12, 0.02, [x, 3.12, -1.1], materials.metal, [0, 0, 0], 'lighting');
       });
 
       scene.add(new THREE.HemisphereLight(0xfff1d0, 0x151515, 1.4));
@@ -803,7 +1237,7 @@
       keyLight.position.set(3, 4, 4);
       scene.add(keyLight);
 
-      const state = { distance: 7.4, theta: -0.68, phi: 1.0, dragging: false, lastX: 0, lastY: 0, userMoved: false };
+      const state = { distance: 7.4, theta: -0.68, phi: 1.0, dragging: false, lastX: 0, lastY: 0, downX: 0, downY: 0, userMoved: false };
       const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
       const updateCamera = () => {
         camera.position.set(
@@ -821,15 +1255,91 @@
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
       };
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2();
+      const isPopupAction = (event) => Boolean(event.target.closest('[data-material-popup], [data-material-sample]'));
+      const showMaterialPopup = (detail) => {
+        if (!detail || !materialPopup || !materialTitle || !materialText || !materialSwatches) return;
+        materialTitle.textContent = detail.title;
+        materialText.textContent = detail.text;
+        materialSwatches.innerHTML = '';
+        detail.swatches.forEach(([label, preview]) => {
+          const swatch = document.createElement('button');
+          swatch.className = 'material-swatch';
+          swatch.type = 'button';
+          swatch.style.setProperty('--swatch', preview);
+          swatch.setAttribute('aria-label', `View ${label} material sample`);
+          const swatchLabel = document.createElement('span');
+          swatchLabel.innerHTML = `${label}<small>Tap to expand</small>`;
+          swatch.appendChild(swatchLabel);
+          swatch.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (!materialSample || !samplePreview || !sampleTitle || !sampleText) return;
+            samplePreview.style.setProperty('--swatch', preview);
+            samplePreview.innerHTML = '';
+            const display = document.createElement('div');
+            display.className = 'sample-display';
+            const board = document.createElement('div');
+            board.className = 'sample-board';
+            board.style.setProperty('--swatch', preview);
+            const photo = samplePhotos[label];
+            if (photo) board.style.setProperty('--photo', `url("${photo}"), ${preview}`);
+            const boardLabel = document.createElement('div');
+            boardLabel.className = 'sample-board-label';
+            const boardName = document.createElement('span');
+            boardName.textContent = label;
+            const boardType = document.createElement('small');
+            boardType.textContent = 'showroom sample';
+            boardLabel.append(boardName, boardType);
+            board.appendChild(boardLabel);
+            display.appendChild(board);
+            samplePreview.appendChild(display);
+            sampleTitle.textContent = label;
+            sampleText.textContent = sampleDescriptions[label] || 'This material can be reviewed during the 3D design step so the customer can compare color, finish, and style before the job starts.';
+            const existingMeta = materialSample.querySelector('[data-sample-meta]');
+            existingMeta?.remove();
+            const meta = document.createElement('div');
+            meta.className = 'sample-meta';
+            meta.dataset.sampleMeta = '';
+            (sampleMeta[label] || ['Material sample', 'Design option']).forEach((item) => {
+              const tag = document.createElement('span');
+              tag.textContent = item;
+              meta.appendChild(tag);
+            });
+            sampleText.insertAdjacentElement('afterend', meta);
+            materialSample.hidden = false;
+          });
+          materialSwatches.appendChild(swatch);
+        });
+        materialPopup.hidden = false;
+      };
+      const pickKitchenPart = (event) => {
+        const rect = designScene.getBoundingClientRect();
+        pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(pointer, camera);
+        const hit = raycaster.intersectObjects(room.children, false).find((item) => item.object.userData.detail);
+        if (hit) showMaterialPopup(hit.object.userData.detail);
+      };
+      materialClose?.addEventListener('click', () => {
+        if (materialPopup) materialPopup.hidden = true;
+      });
+      sampleClose?.addEventListener('click', () => {
+        if (materialSample) materialSample.hidden = true;
+      });
 
       designScene.addEventListener('pointerdown', (event) => {
+        if (isPopupAction(event)) return;
         state.dragging = true;
         state.userMoved = true;
         state.lastX = event.clientX;
         state.lastY = event.clientY;
+        state.downX = event.clientX;
+        state.downY = event.clientY;
         designScene.setPointerCapture(event.pointerId);
       });
       designScene.addEventListener('pointermove', (event) => {
+        if (isPopupAction(event)) return;
         if (!state.dragging) return;
         const dx = event.clientX - state.lastX;
         const dy = event.clientY - state.lastY;
@@ -839,8 +1349,11 @@
         state.lastY = event.clientY;
       });
       designScene.addEventListener('pointerup', (event) => {
+        if (isPopupAction(event)) return;
+        const moved = Math.hypot(event.clientX - state.downX, event.clientY - state.downY);
         state.dragging = false;
         designScene.releasePointerCapture(event.pointerId);
+        if (moved < 8) pickKitchenPart(event);
       });
       designScene.addEventListener('wheel', (event) => {
         event.preventDefault();
