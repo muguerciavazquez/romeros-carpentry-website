@@ -145,6 +145,34 @@
     .service-card, .project-card, .review-card, .booking-card, .quote-card { transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
     .service-card:hover, .project-card:hover, .review-card:hover, .booking-card:hover, .quote-card:hover { transform: translateY(-3px); border-color: rgba(227,189,125,.34); box-shadow: 0 18px 48px rgba(0,0,0,.2); }
 
+    .design-section { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(185,133,78,.08)); border-block: 1px solid var(--white-line); }
+    .design-layout { display: grid; grid-template-columns: minmax(300px, .78fr) minmax(0, 1.1fr); gap: 28px; align-items: center; }
+    .design-copy h2 { max-width: 13ch; }
+    .design-copy p { color: var(--muted); max-width: 58ch; }
+    .design-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 22px 0 0; }
+    .design-point { border: 1px solid var(--white-line); border-radius: var(--radius); padding: 14px; background: rgba(255,255,255,.04); }
+    .design-point strong { display: block; color: var(--gold-2); }
+    .design-point span { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .design-scene-wrap { display: grid; gap: 10px; }
+    .design-scene {
+      position: relative;
+      min-height: 430px;
+      height: min(64vh, 620px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: radial-gradient(circle at 42% 12%, rgba(227,189,125,.22), transparent 24rem), #0b0b0d;
+      box-shadow: var(--shadow);
+      touch-action: none;
+    }
+    .design-scene canvas { width: 100%; height: 100%; display: block; }
+    .scene-label { position: absolute; left: 16px; top: 16px; z-index: 2; display: grid; gap: 3px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); background: rgba(5,5,5,.72); backdrop-filter: blur(12px); }
+    .scene-label strong { color: var(--gold-2); line-height: 1.1; }
+    .scene-label span { color: var(--muted); font-size: 13px; }
+    .scene-fallback { position: absolute; inset: auto 16px 16px; z-index: 2; display: none; color: var(--muted); font-size: 13px; }
+    .design-scene.is-fallback .scene-fallback { display: block; }
+    .scene-note { color: var(--muted); font-size: 13px; margin: 0; }
+
     .split { display: grid; grid-template-columns: minmax(300px, .9fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
     .compare { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); min-height: 520px; background: #111; }
     .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -224,11 +252,12 @@
       .nav.open { display: flex; }
       .nav a { padding: 12px; border-bottom: 1px solid var(--white-line); }
       .nav .btn { margin-top: 10px; }
-      .hero-grid, .section-head, .split, .quote-layout, .booking-layout { grid-template-columns: 1fr; }
+      .hero-grid, .section-head, .design-layout, .split, .quote-layout, .booking-layout { grid-template-columns: 1fr; }
       .hero-media { order: -1; }
       h1 { max-width: 12ch; }
       .service-grid, .area-grid, .review-grid, .faq-grid, .gallery-grid { grid-template-columns: 1fr; }
       .compare { min-height: 440px; }
+      .design-scene { min-height: 360px; height: 56vh; }
       .sticky-cta { display: grid; }
     }
 
@@ -238,11 +267,12 @@
       .brand-logo { width: 78px; height: 66px; padding: 5px; }
       .brand span { display: none; }
       .hero { padding-top: 28px; }
-      .trust-row, .metrics, .form-row { grid-template-columns: 1fr; }
+      .trust-row, .metrics, .design-points, .form-row { grid-template-columns: 1fr; }
       .quick-questions { grid-template-columns: 1fr; }
       section { padding: 54px 0; }
       .hero-media img { aspect-ratio: 1 / 1.08; }
       .compare { min-height: 360px; }
+      .design-scene { min-height: 340px; height: 52vh; }
       .contact-list a, .contact-list span { flex-direction: column; gap: 2px; }
     }
   </style>
@@ -354,6 +384,37 @@
       </div>
     </section>
 
+    <section class="design-section" id="design-preview">
+      <div class="container design-layout">
+        <article class="design-copy">
+          <span class="eyebrow">3D Design Preview</span>
+          <h2>See the plan before the build.</h2>
+          <p>ROMERO'S CARPENTRY can prepare a 3D design upfront so you can review the layout, storage, lighting, material direction, and finish details before work begins.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#estimate">Request Estimate</a>
+            <a class="btn btn-secondary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Schedule Design Review</a>
+          </div>
+          <div class="design-points" aria-label="3D design review details">
+            <div class="design-point"><strong>Layout</strong><span>Review cabinet, island, and walkway placement.</span></div>
+            <div class="design-point"><strong>Materials</strong><span>Compare wood tones, counters, and wall finishes.</span></div>
+            <div class="design-point"><strong>Storage</strong><span>Plan shelves, drawers, and built-in details.</span></div>
+            <div class="design-point"><strong>Lighting</strong><span>Preview fixture locations and focal points.</span></div>
+          </div>
+        </article>
+        <div class="design-scene-wrap">
+          <div class="design-scene" data-design-scene aria-label="Interactive 3D kitchen design preview">
+            <canvas data-design-canvas></canvas>
+            <div class="scene-label">
+              <strong>Interactive 3D example</strong>
+              <span>Drag to rotate. Scroll to zoom.</span>
+            </div>
+            <p class="scene-fallback">The interactive preview could not load in this browser, but the live site can still show the 3D design example when WebGL is available.</p>
+          </div>
+          <p class="scene-note">A 3D preview helps customers make decisions earlier, before materials are ordered and work starts.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="transformation">
       <div class="container split">
         <div class="compare" data-compare>
@@ -432,8 +493,6 @@
           <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/before-1.jpeg" alt="Kitchen before remodel with older cabinets, island, counters, and flooring" loading="lazy" /><span class="project-tag">Before</span><div><h3>Kitchen before: original layout</h3><p>Existing cabinets, counters, lighting, island, and flooring before the new finish package.</p></div></article>
           <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/after-1.jpeg" alt="Finished kitchen remodel with gray cabinets, white counters, lighting, backsplash, and range hood" loading="lazy" /><span class="project-tag after">After</span><div><h3>Kitchen after</h3><p>Updated cabinets, counters, backsplash, hood detail, hardware, and lighting.</p></div></article>
           <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-1/after-video.mp4" type="video/mp4" /></video><span class="project-tag after">Video</span><div><h3>Kitchen walkthrough</h3><p>Final view of the completed kitchen.</p></div></article>
-          <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-videos/kitchen-remodeled-1.mp4" type="video/mp4" /></video><span class="project-tag after">Video</span><div><h3>Kitchen remodel video</h3><p>Additional video view of completed kitchen remodeling work.</p></div></article>
-          <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-videos/another-kitchen-remodeled.mp4" type="video/mp4" /></video><span class="project-tag after">Video</span><div><h3>Another kitchen remodel</h3><p>Finished kitchen walkthrough showing cabinetry, counters, lighting, and detail work.</p></div></article>
           <article class="project-card" data-project="custom"><img src="./assets/custom-carpentry/closet-build.jpeg" alt="Custom closet build with shelves, drawers, hanging space, and trim work" loading="lazy" /><span class="project-tag after">Custom</span><div><h3>Custom closet build</h3><p>Built-in shelves, drawers, hanging sections, and trim prepared for final finish.</p></div></article>
         </div>
       </div>
@@ -555,6 +614,7 @@
     <a class="btn btn-primary" href="#estimate">Estimate</a>
   </div>
 
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script>
     const calendarUrl = 'https://calendar.app.google/Rxy2qoWPBhW81quF6';
     const root = document.documentElement;
@@ -603,6 +663,127 @@
         });
       });
     });
+
+    const designScene = document.querySelector('[data-design-scene]');
+    const designCanvas = document.querySelector('[data-design-canvas]');
+    if (designScene && designCanvas && window.THREE) {
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0b0b0d);
+
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer({ canvas: designCanvas, antialias: true, alpha: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const room = new THREE.Group();
+      scene.add(room);
+
+      const materials = {
+        wall: new THREE.MeshStandardMaterial({ color: 0xd9d0c2, roughness: 0.82 }),
+        floor: new THREE.MeshStandardMaterial({ color: 0x8a633d, roughness: 0.7 }),
+        cabinet: new THREE.MeshStandardMaterial({ color: 0x788070, roughness: 0.62 }),
+        counter: new THREE.MeshStandardMaterial({ color: 0xf2eee5, roughness: 0.35 }),
+        wood: new THREE.MeshStandardMaterial({ color: 0xb9854e, roughness: 0.58 }),
+        dark: new THREE.MeshStandardMaterial({ color: 0x1b1a18, roughness: 0.55 }),
+        metal: new THREE.MeshStandardMaterial({ color: 0xc7b89a, roughness: 0.32, metalness: 0.5 })
+      };
+
+      const addBox = (name, size, position, material) => {
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(size[0], size[1], size[2]), material);
+        mesh.name = name;
+        mesh.position.set(position[0], position[1], position[2]);
+        room.add(mesh);
+        return mesh;
+      };
+
+      addBox('floor', [6.8, 0.08, 5.2], [0, -0.04, 0], materials.floor);
+      addBox('back wall', [6.8, 3.2, 0.08], [0, 1.56, -2.6], materials.wall);
+      addBox('side wall', [0.08, 3.2, 5.2], [-3.4, 1.56, 0], materials.wall);
+      addBox('base cabinets', [5.4, 0.78, 0.62], [0.1, 0.39, -2.22], materials.cabinet);
+      addBox('countertop', [5.65, 0.12, 0.76], [0.1, 0.84, -2.18], materials.counter);
+      addBox('backsplash', [5.55, 0.72, 0.05], [0.1, 1.24, -2.54], materials.counter);
+      addBox('upper cabinets left', [1.28, 0.92, 0.46], [-2.05, 1.86, -2.34], materials.cabinet);
+      addBox('upper cabinets right', [1.28, 0.92, 0.46], [2.22, 1.86, -2.34], materials.cabinet);
+      addBox('range hood', [0.92, 0.52, 0.5], [0.15, 1.96, -2.34], materials.metal);
+      addBox('range', [0.86, 0.58, 0.68], [0.15, 0.32, -2.12], materials.dark);
+      addBox('island cabinet', [2.35, 0.82, 1.16], [0.72, 0.41, 0.35], materials.cabinet);
+      addBox('island counter', [2.58, 0.14, 1.36], [0.72, 0.9, 0.35], materials.counter);
+      addBox('wood beam', [6.2, 0.14, 0.18], [0.1, 2.88, -0.55], materials.wood);
+      addBox('open shelf', [1.24, 0.08, 0.34], [-0.95, 1.7, -2.34], materials.wood);
+
+      for (let i = 0; i < 5; i += 1) {
+        addBox(`cabinet line ${i}`, [0.025, 0.72, 0.66], [-2.32 + i * 1.15, 0.43, -1.86], materials.dark);
+      }
+      [-0.15, 1.6].forEach((x) => {
+        const light = new THREE.PointLight(0xffe0aa, 1.1, 4);
+        light.position.set(x, 2.58, 0.42);
+        scene.add(light);
+        addBox('pendant light', [0.16, 0.22, 0.16], [x, 2.22, 0.42], materials.metal);
+      });
+
+      scene.add(new THREE.HemisphereLight(0xfff1d0, 0x151515, 1.4));
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.1);
+      keyLight.position.set(3, 4, 4);
+      scene.add(keyLight);
+
+      const state = { distance: 7.4, theta: -0.68, phi: 1.0, dragging: false, lastX: 0, lastY: 0, userMoved: false };
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const updateCamera = () => {
+        camera.position.set(
+          Math.sin(state.theta) * Math.sin(state.phi) * state.distance,
+          Math.cos(state.phi) * state.distance + 1.1,
+          Math.cos(state.theta) * Math.sin(state.phi) * state.distance
+        );
+        camera.lookAt(0, 1.05, -0.75);
+      };
+      const resizeScene = () => {
+        const rect = designScene.getBoundingClientRect();
+        const width = Math.max(1, Math.floor(rect.width));
+        const height = Math.max(1, Math.floor(rect.height));
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      };
+
+      designScene.addEventListener('pointerdown', (event) => {
+        state.dragging = true;
+        state.userMoved = true;
+        state.lastX = event.clientX;
+        state.lastY = event.clientY;
+        designScene.setPointerCapture(event.pointerId);
+      });
+      designScene.addEventListener('pointermove', (event) => {
+        if (!state.dragging) return;
+        const dx = event.clientX - state.lastX;
+        const dy = event.clientY - state.lastY;
+        state.theta -= dx * 0.007;
+        state.phi = clamp(state.phi + dy * 0.005, 0.56, 1.38);
+        state.lastX = event.clientX;
+        state.lastY = event.clientY;
+      });
+      designScene.addEventListener('pointerup', (event) => {
+        state.dragging = false;
+        designScene.releasePointerCapture(event.pointerId);
+      });
+      designScene.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        state.userMoved = true;
+        state.distance = clamp(state.distance + event.deltaY * 0.006, 4.6, 10.5);
+      }, { passive: false });
+
+      const resizeObserver = new ResizeObserver(resizeScene);
+      resizeObserver.observe(designScene);
+      resizeScene();
+      const animateDesign = () => {
+        if (!state.dragging && !state.userMoved) state.theta += 0.0022;
+        updateCamera();
+        renderer.render(scene, camera);
+        requestAnimationFrame(animateDesign);
+      };
+      animateDesign();
+    } else if (designScene) {
+      designScene.classList.add('is-fallback');
+    }
 
     const encodeFormData = (formData) => new URLSearchParams(formData).toString();
     document.querySelector('[data-estimate-form]')?.addEventListener('submit', async (event) => {

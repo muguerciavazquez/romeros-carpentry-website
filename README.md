@@ -8,14 +8,15 @@ Client slogan: Built Right. Built To Last.
 
 - Main page: `index.html`
 - Built as a direct black-and-gold remodeling website for customer leads.
-- Sections included: hero, services, before-and-after comparisons, project gallery, FAQ, booking, and quote request.
+- Sections included: hero, services, interactive 3D design preview, before-and-after comparisons, project gallery, FAQ, booking, and quote request.
 - Customer actions include phone call, estimate request, and embedded Google Calendar booking.
 - Booking uses the live Google Calendar appointment page: `https://calendar.app.google/Rxy2qoWPBhW81quF6`.
 - Estimate requests use Netlify Forms and redirect to `thank-you.html`.
 - Previous logo files are still in `assets/` for reference only.
 - The full ROMERO'S CARPENTRY logo is stored in `assets/romeros-carpentry-logo.png`.
 - The header uses the cropped symbol logo at `assets/romeros-carpentry-symbol.png`.
-- Real Bathroom 1, Bathroom 2, Kitchen 1 photos/video, extra kitchen videos, custom closet build, and exterior dormer project photos are stored in `assets/` and used in the transformation and gallery sections.
+- Real Bathroom 1, Bathroom 2, Kitchen 1 photos/video, custom closet build, and exterior dormer project photos are stored in `assets/` and used in the transformation and gallery sections.
+- The 3D design preview uses Three.js from a CDN and runs directly inside `index.html`.
 - Support files included: `robots.txt`, `sitemap.xml`, and `site.webmanifest`.
 
 ## Next Build Priorities
