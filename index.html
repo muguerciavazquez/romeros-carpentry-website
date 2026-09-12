@@ -133,6 +133,9 @@
     .section-head p { margin: 0; color: var(--muted); }
 
     .service-grid, .area-grid, .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .service-summary { border: 1px solid var(--white-line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)); padding: 22px; }
+    .service-summary p { margin: 0; color: var(--muted); font-size: 17px; }
+    .service-highlight { display: inline; color: var(--gold-2); font-weight: 900; }
     .service-card, .area-card, .review-card, .faq-item, .quote-card {
       border: 1px solid var(--white-line);
       background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
@@ -268,6 +271,8 @@
       .brand span { display: none; }
       .hero { padding-top: 28px; }
       .trust-row, .metrics, .design-points, .form-row { grid-template-columns: 1fr; }
+      .service-summary { padding: 16px; gap: 16px; }
+      .service-summary p { font-size: 15px; line-height: 1.55; }
       .quick-questions { grid-template-columns: 1fr; }
       section { padding: 54px 0; }
       .hero-media img { aspect-ratio: 1 / 1.08; }
@@ -373,13 +378,8 @@
           </div>
           <p>Straightforward remodeling and carpentry services for homeowners who want clean, durable work.</p>
         </div>
-        <div class="service-grid">
-          <article class="service-card"><span>Kitchen</span><h3>Kitchen remodeling</h3><p>Cabinets, counters, backsplashes, lighting, islands, and finish upgrades.</p></article>
-          <article class="service-card"><span>Bathroom</span><h3>Bathroom remodeling</h3><p>Vanities, showers, tile, flooring, lighting, mirrors, and fixtures.</p></article>
-          <article class="service-card"><span>Exterior</span><h3>Dormers and trim</h3><p>Dormer repairs, exterior wood details, siding updates, and trim replacement.</p></article>
-          <article class="service-card"><span>Flooring</span><h3>Floor installation</h3><p>Floor replacement and installation for cleaner, stronger interior spaces.</p></article>
-          <article class="service-card"><span>Interior</span><h3>Room updates</h3><p>Trim, paint, feature walls, interior upgrades, and finish carpentry.</p></article>
-          <article class="service-card"><span>Custom</span><h3>Custom carpentry</h3><p>Built-ins, repairs, wood details, and tailored home improvements.</p></article>
+        <div class="service-summary">
+          <p>We handle <span class="service-highlight">kitchens</span>, <span class="service-highlight">bathrooms</span>, <span class="service-highlight">flooring</span>, <span class="service-highlight">exterior dormers and trim</span>, <span class="service-highlight">interior room updates</span>, <span class="service-highlight">built-ins</span>, repairs, and <span class="service-highlight">custom carpentry</span> for Jacksonville-area homeowners who want clean, durable work.</p>
         </div>
       </div>
     </section>
@@ -389,7 +389,7 @@
         <article class="design-copy">
           <span class="eyebrow">3D Design Preview</span>
           <h2>See the plan before the build.</h2>
-          <p>ROMERO'S CARPENTRY can prepare a 3D design upfront so you can review the layout, storage, lighting, material direction, and finish details before work begins.</p>
+          <p>After the estimate, we show you the design in 3D before the job starts as part of the project, so you can review the layout, storage, lighting, materials, and finish details upfront.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#estimate">Request Estimate</a>
             <a class="btn btn-secondary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Schedule Design Review</a>
@@ -410,7 +410,7 @@
             </div>
             <p class="scene-fallback">The interactive preview could not load in this browser, but the live site can still show the 3D design example when WebGL is available.</p>
           </div>
-          <p class="scene-note">A 3D preview helps customers make decisions earlier, before materials are ordered and work starts.</p>
+          <p class="scene-note">The 3D design preview helps customers approve the plan before materials are ordered and work starts.</p>
         </div>
       </div>
     </section>
@@ -679,13 +679,20 @@
       scene.add(room);
 
       const materials = {
-        wall: new THREE.MeshStandardMaterial({ color: 0xd9d0c2, roughness: 0.82 }),
-        floor: new THREE.MeshStandardMaterial({ color: 0x8a633d, roughness: 0.7 }),
-        cabinet: new THREE.MeshStandardMaterial({ color: 0x788070, roughness: 0.62 }),
+        wall: new THREE.MeshStandardMaterial({ color: 0xe5ddd0, roughness: 0.82 }),
+        floor: new THREE.MeshStandardMaterial({ color: 0x9b7149, roughness: 0.68 }),
+        cabinet: new THREE.MeshStandardMaterial({ color: 0x879084, roughness: 0.62 }),
+        cabinetDark: new THREE.MeshStandardMaterial({ color: 0x5f675e, roughness: 0.68 }),
         counter: new THREE.MeshStandardMaterial({ color: 0xf2eee5, roughness: 0.35 }),
+        marble: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.28 }),
+        tile: new THREE.MeshStandardMaterial({ color: 0xe8e0d5, roughness: 0.5 }),
+        grout: new THREE.MeshStandardMaterial({ color: 0xb9afa0, roughness: 0.8 }),
         wood: new THREE.MeshStandardMaterial({ color: 0xb9854e, roughness: 0.58 }),
         dark: new THREE.MeshStandardMaterial({ color: 0x1b1a18, roughness: 0.55 }),
-        metal: new THREE.MeshStandardMaterial({ color: 0xc7b89a, roughness: 0.32, metalness: 0.5 })
+        blackGlass: new THREE.MeshStandardMaterial({ color: 0x070707, roughness: 0.18, metalness: 0.12 }),
+        metal: new THREE.MeshStandardMaterial({ color: 0xc7b89a, roughness: 0.32, metalness: 0.5 }),
+        stainless: new THREE.MeshStandardMaterial({ color: 0xbfc2bf, roughness: 0.24, metalness: 0.72 }),
+        glass: new THREE.MeshStandardMaterial({ color: 0x8fb7c9, roughness: 0.08, metalness: 0, transparent: true, opacity: 0.45 })
       };
 
       const addBox = (name, size, position, material) => {
@@ -695,30 +702,100 @@
         room.add(mesh);
         return mesh;
       };
+      const addCylinder = (name, radius, height, position, material, rotation = [0, 0, 0]) => {
+        const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, 28), material);
+        mesh.name = name;
+        mesh.position.set(position[0], position[1], position[2]);
+        mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
+        room.add(mesh);
+        return mesh;
+      };
 
       addBox('floor', [6.8, 0.08, 5.2], [0, -0.04, 0], materials.floor);
       addBox('back wall', [6.8, 3.2, 0.08], [0, 1.56, -2.6], materials.wall);
       addBox('side wall', [0.08, 3.2, 5.2], [-3.4, 1.56, 0], materials.wall);
+      addBox('ceiling plane', [6.8, 0.06, 5.2], [0, 3.18, 0], materials.wall);
+      addBox('left baseboard', [0.1, 0.16, 5.05], [-3.3, 0.08, -0.02], materials.wood);
+      addBox('back baseboard', [6.65, 0.16, 0.1], [0, 0.08, -2.48], materials.wood);
+      addBox('large window', [1.2, 1.35, 0.04], [-2.6, 1.82, -2.64], materials.glass);
+      addBox('window cross rail', [1.18, 0.035, 0.055], [-2.6, 1.82, -2.58], materials.wood);
+      addBox('window center mullion', [0.035, 1.28, 0.055], [-2.6, 1.82, -2.58], materials.wood);
+      addBox('window top trim', [1.36, 0.07, 0.06], [-2.6, 2.53, -2.6], materials.wood);
+      addBox('window sill', [1.46, 0.08, 0.16], [-2.6, 1.09, -2.52], materials.wood);
       addBox('base cabinets', [5.4, 0.78, 0.62], [0.1, 0.39, -2.22], materials.cabinet);
-      addBox('countertop', [5.65, 0.12, 0.76], [0.1, 0.84, -2.18], materials.counter);
+      addBox('countertop', [5.65, 0.12, 0.76], [0.1, 0.84, -2.18], materials.marble);
       addBox('backsplash', [5.55, 0.72, 0.05], [0.1, 1.24, -2.54], materials.counter);
+      for (let x = -2.55; x <= 2.75; x += 0.46) {
+        addBox('backsplash vertical grout', [0.018, 0.7, 0.058], [x, 1.24, -2.5], materials.grout);
+      }
+      for (let y = 0.92; y <= 1.56; y += 0.18) {
+        addBox('backsplash horizontal grout', [5.5, 0.014, 0.058], [0.1, y, -2.5], materials.grout);
+      }
+      addBox('pantry tower', [0.64, 2.12, 0.62], [-3.0, 1.08, -2.2], materials.cabinet);
+      addBox('pantry door panel upper', [0.48, 0.82, 0.035], [-3.0, 1.68, -1.86], materials.cabinetDark);
+      addBox('pantry door panel lower', [0.48, 0.82, 0.035], [-3.0, 0.68, -1.86], materials.cabinetDark);
+      addBox('refrigerator body', [0.76, 1.95, 0.7], [3.0, 0.98, -2.12], materials.stainless);
+      addBox('refrigerator left door', [0.035, 1.72, 0.55], [2.76, 1.02, -1.72], materials.metal);
+      addBox('refrigerator right door', [0.035, 1.72, 0.55], [3.24, 1.02, -1.72], materials.metal);
+      addBox('fridge handles', [0.05, 0.85, 0.035], [2.9, 1.12, -1.44], materials.dark);
       addBox('upper cabinets left', [1.28, 0.92, 0.46], [-2.05, 1.86, -2.34], materials.cabinet);
       addBox('upper cabinets right', [1.28, 0.92, 0.46], [2.22, 1.86, -2.34], materials.cabinet);
-      addBox('range hood', [0.92, 0.52, 0.5], [0.15, 1.96, -2.34], materials.metal);
-      addBox('range', [0.86, 0.58, 0.68], [0.15, 0.32, -2.12], materials.dark);
+      addBox('cabinet crown left', [1.4, 0.12, 0.54], [-2.05, 2.38, -2.34], materials.wood);
+      addBox('cabinet crown right', [1.4, 0.12, 0.54], [2.22, 2.38, -2.34], materials.wood);
+      addBox('range hood chimney', [0.42, 0.78, 0.38], [0.15, 2.26, -2.34], materials.stainless);
+      addBox('range hood canopy', [1.08, 0.24, 0.58], [0.15, 1.86, -2.34], materials.stainless);
+      addBox('range body', [0.88, 0.58, 0.68], [0.15, 0.32, -2.12], materials.dark);
+      addBox('oven glass door', [0.62, 0.36, 0.035], [0.15, 0.36, -1.76], materials.blackGlass);
+      addBox('oven handle', [0.54, 0.035, 0.035], [0.15, 0.6, -1.72], materials.metal);
+      [-0.1, 0.4].forEach((x) => {
+        [-2.28, -1.96].forEach((z) => addCylinder('cooktop burner', 0.12, 0.018, [x, 0.88, z], materials.blackGlass));
+      });
       addBox('island cabinet', [2.35, 0.82, 1.16], [0.72, 0.41, 0.35], materials.cabinet);
-      addBox('island counter', [2.58, 0.14, 1.36], [0.72, 0.9, 0.35], materials.counter);
+      addBox('island counter', [2.8, 0.14, 1.5], [0.72, 0.9, 0.35], materials.marble);
+      addBox('island dark accent', [2.38, 0.08, 0.04], [0.72, 0.63, 0.94], materials.cabinetDark);
+      addBox('island side panel', [0.05, 0.68, 1.0], [-0.48, 0.44, 0.35], materials.cabinetDark);
       addBox('wood beam', [6.2, 0.14, 0.18], [0.1, 2.88, -0.55], materials.wood);
       addBox('open shelf', [1.24, 0.08, 0.34], [-0.95, 1.7, -2.34], materials.wood);
+      addBox('shelf decor bowl', [0.22, 0.08, 0.18], [-1.18, 1.8, -2.24], materials.metal);
+      addBox('shelf decor frame', [0.2, 0.28, 0.035], [-0.72, 1.87, -2.18], materials.wood);
+      addBox('sink basin', [0.62, 0.08, 0.42], [1.25, 0.98, 0.36], materials.metal);
+      addBox('sink dark opening', [0.48, 0.025, 0.28], [1.25, 1.03, 0.36], materials.blackGlass);
+      addCylinder('faucet neck', 0.035, 0.55, [1.25, 1.2, 0.12], materials.metal, [Math.PI / 2, 0, 0]);
+      addCylinder('faucet stem', 0.035, 0.34, [1.25, 1.08, 0.03], materials.metal);
+      addBox('cutting board', [0.48, 0.035, 0.34], [0.2, 1.01, 0.76], materials.wood);
+      addCylinder('counter vase', 0.09, 0.28, [-0.2, 1.12, -2.06], materials.dark);
+      addBox('counter greenery', [0.3, 0.24, 0.3], [-0.2, 1.38, -2.06], materials.glass);
 
       for (let i = 0; i < 5; i += 1) {
-        addBox(`cabinet line ${i}`, [0.025, 0.72, 0.66], [-2.32 + i * 1.15, 0.43, -1.86], materials.dark);
+        const x = -2.32 + i * 1.15;
+        addBox(`cabinet door ${i}`, [0.82, 0.58, 0.035], [x, 0.42, -1.86], materials.cabinetDark);
+        addBox(`cabinet handle ${i}`, [0.34, 0.035, 0.035], [x, 0.52, -1.82], materials.metal);
       }
+      [-2.25, 2.02].forEach((x) => {
+        addBox('upper cabinet face', [0.96, 0.68, 0.035], [x, 1.86, -2.08], materials.cabinetDark);
+        addBox('upper cabinet handle', [0.035, 0.34, 0.035], [x + 0.34, 1.78, -2.03], materials.metal);
+      });
+      [-0.22, 0.72, 1.66].forEach((x) => {
+        addBox('island drawer face', [0.54, 0.26, 0.035], [x, 0.56, 0.96], materials.cabinetDark);
+        addBox('island drawer pull', [0.28, 0.028, 0.035], [x, 0.58, 1.0], materials.metal);
+      });
+      [-0.1, 1.48].forEach((x) => {
+        addCylinder('stool seat', 0.24, 0.08, [x, 0.55, 1.45], materials.wood);
+        addCylinder('stool base', 0.035, 0.5, [x, 0.27, 1.45], materials.metal);
+        addCylinder('stool foot ring', 0.18, 0.018, [x, 0.32, 1.45], materials.metal);
+      });
       [-0.15, 1.6].forEach((x) => {
         const light = new THREE.PointLight(0xffe0aa, 1.1, 4);
         light.position.set(x, 2.58, 0.42);
         scene.add(light);
-        addBox('pendant light', [0.16, 0.22, 0.16], [x, 2.22, 0.42], materials.metal);
+        addCylinder('pendant shade', 0.18, 0.24, [x, 2.22, 0.42], materials.metal);
+        addCylinder('pendant cord', 0.012, 0.44, [x, 2.52, 0.42], materials.dark);
+      });
+      [-2.2, 0, 2.2].forEach((x) => {
+        const light = new THREE.PointLight(0xfff0cf, 0.55, 3);
+        light.position.set(x, 3.0, -1.1);
+        scene.add(light);
+        addCylinder('recessed light trim', 0.12, 0.02, [x, 3.12, -1.1], materials.metal);
       });
 
       scene.add(new THREE.HemisphereLight(0xfff1d0, 0x151515, 1.4));
