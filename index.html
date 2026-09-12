@@ -216,45 +216,6 @@
     .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: none; grid-template-columns: 1fr 1fr; background: #050505; border-top: 1px solid var(--white-line); padding: 10px; gap: 10px; }
     [data-theme="light"] .sticky-cta { background: #fffaf0; }
-    .chat-widget { position: fixed; right: 18px; bottom: 18px; z-index: 70; width: min(380px, calc(100% - 36px)); }
-    .chat-toggle { width: 100%; justify-content: space-between; box-shadow: var(--shadow); }
-    .chat-panel { display: none; margin-bottom: 10px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #101012; box-shadow: var(--shadow); }
-    .chat-panel.open { display: block; }
-    .chat-panel.attention { animation: chatPulse 1.4s ease 1; }
-    .chat-head { display: flex; justify-content: space-between; gap: 14px; padding: 16px; border-bottom: 1px solid var(--white-line); }
-    .chat-head strong { display: block; }
-    .chat-head span { display: block; color: var(--muted); font-size: 13px; }
-    .chat-close { border: 1px solid var(--white-line); background: transparent; color: var(--text); border-radius: var(--radius); min-width: 38px; height: 38px; }
-    .chat-messages { max-height: 310px; overflow: auto; display: grid; gap: 10px; padding: 14px; }
-    .message { width: fit-content; max-width: 88%; padding: 10px 12px; border-radius: var(--radius); background: rgba(255,255,255,.06); color: var(--muted); font-size: 14px; }
-    .message.user { margin-left: auto; background: rgba(214,171,77,.18); color: var(--text); }
-    .quick-questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 14px 14px; }
-    .quick-questions button { min-height: 40px; border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255,255,255,.04); color: var(--text); font-weight: 800; font-size: 13px; }
-    .chat-input-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 14px; border-top: 1px solid var(--white-line); }
-    .chat-input-row input { min-height: 42px; }
-    .chat-greeting {
-      position: absolute;
-      right: 0;
-      bottom: 58px;
-      width: min(310px, 100%);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #101012;
-      box-shadow: var(--shadow);
-      padding: 14px;
-    }
-    .chat-greeting.hidden { display: none; }
-    .chat-greeting strong { display: block; color: var(--gold-2); }
-    .chat-greeting p { margin: 4px 0 12px; color: var(--muted); font-size: 14px; }
-    .chat-greeting-actions { display: flex; gap: 8px; }
-    .chat-greeting-actions button { flex: 1; min-height: 38px; border-radius: var(--radius); border: 1px solid var(--white-line); font-weight: 900; }
-    .chat-greeting-actions button:first-child { background: var(--gold-2); color: #111; border-color: transparent; }
-    .chat-greeting-actions button:last-child { background: transparent; color: var(--text); }
-    @keyframes chatPulse {
-      0% { transform: translateY(10px); opacity: .7; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
     @media (max-width: 940px) {
       .topbar .container { flex-direction: column; gap: 4px; }
       .nav-toggle { display: inline-flex; align-items: center; }
@@ -269,7 +230,6 @@
       .service-grid, .area-grid, .review-grid, .faq-grid, .gallery-grid { grid-template-columns: 1fr; }
       .compare { min-height: 440px; }
       .sticky-cta { display: grid; }
-      .chat-widget { right: 10px; bottom: 74px; width: calc(100% - 20px); }
     }
 
     @media (max-width: 620px) {
@@ -310,9 +270,9 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"Does ROMERO'S CARPENTRY offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes. Homeowners can request a free estimate for kitchens, bathrooms, flooring, fireplaces, interiors, and full remodeling projects."}},
+        {"@type":"Question","name":"Does ROMERO'S CARPENTRY offer estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes. Homeowners can request an estimate for kitchens, bathrooms, flooring, exterior dormers, interiors, and custom carpentry projects."}},
         {"@type":"Question","name":"What areas does ROMERO'S CARPENTRY serve?","acceptedAnswer":{"@type":"Answer","text":"ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities."}},
-        {"@type":"Question","name":"What remodeling services are available?","acceptedAnswer":{"@type":"Answer","text":"Services include kitchen remodeling, bathroom remodeling, flooring, fireplace transformations, exterior dormer repairs, interior renovations, and custom home upgrades."}}
+        {"@type":"Question","name":"What remodeling services are available?","acceptedAnswer":{"@type":"Answer","text":"Services include kitchen remodeling, bathroom remodeling, flooring, exterior dormer repairs, interior renovations, trim, and custom carpentry."}}
       ]
     }
   </script>
@@ -339,11 +299,10 @@
       <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation">Menu</button>
       <nav class="nav" data-nav aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#areas">Areas</a>
+        <a href="#transformation">Before + After</a>
         <a href="#projects">Projects</a>
-        <a href="#faq">FAQ</a>
         <a href="#booking">Schedule</a>
-        <a class="btn btn-primary" href="#estimate">Free Estimate</a>
+        <a class="btn btn-primary" href="#estimate">Estimate</a>
       </nav>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" title="Switch theme">☀</button>
     </div>
@@ -353,27 +312,23 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Jacksonville Custom Carpentry & Remodeling</span>
-          <h1>Custom work built right, built to last.</h1>
-          <p class="hero-copy">ROMERO'S CARPENTRY transforms kitchens, bathrooms, flooring, fireplaces, exterior dormers, trim, feature walls, and interior living spaces for homeowners across Jacksonville and nearby Northeast Florida communities.</p>
+          <span class="eyebrow">Jacksonville Remodeling</span>
+          <h1>Custom carpentry & remodeling.</h1>
+          <p class="hero-copy">Kitchens, bathrooms, flooring, exterior dormers, trim, and custom home upgrades for Jacksonville and nearby Northeast Florida homeowners.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#estimate">Request Free Estimate</a>
-            <a class="btn btn-secondary" href="#projects">View Project Proof</a>
-          </div>
-          <div class="trust-row" aria-label="Company highlights">
-            <div class="trust-chip"><strong>Free</strong><span>Estimate before you commit</span></div>
-            <div class="trust-chip"><strong>Custom</strong><span>Carpentry and remodeling details</span></div>
-            <div class="trust-chip"><strong>Built</strong><span>Right, durable, and clean</span></div>
+            <a class="btn btn-primary" href="#estimate">Request Estimate</a>
+            <a class="btn btn-secondary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Schedule Appointment</a>
+            <a class="btn btn-secondary" href="tel:+19047292379">Call (904) 729-2379</a>
           </div>
         </div>
         <figure class="hero-media">
-          <img src="./assets/hero-after.png" alt="Modern remodeled living room with custom fireplace wall and warm wood mantle" width="1024" height="1024" fetchpriority="high" />
+          <img src="./assets/kitchen-1/after-1.jpeg" alt="Finished kitchen remodel with updated cabinets, counters, lighting, backsplash, and range hood" width="1200" height="900" fetchpriority="high" />
           <span class="hero-logo-plate" aria-hidden="true">
             <img src="./assets/romeros-carpentry-symbol.png" alt="" />
           </span>
           <figcaption class="media-badge">
-            <strong>Premium interior transformations</strong>
-            <span>Designed for homeowners comparing trusted remodeling contractors.</span>
+            <strong>Real kitchen remodel</strong>
+            <span>Finished cabinetry, counters, lighting, backsplash, and trim details.</span>
           </figcaption>
         </figure>
       </div>
@@ -384,18 +339,17 @@
         <div class="section-head">
           <div>
             <span class="eyebrow">Services</span>
-            <h2>Built around the way homeowners search.</h2>
+            <h2>What we build.</h2>
           </div>
-          <p>Each core service can become its own SEO landing page, giving ROMERO'S CARPENTRY more chances to rank for high-intent remodeling searches.</p>
+          <p>Straightforward remodeling and carpentry services for homeowners who want clean, durable work.</p>
         </div>
         <div class="service-grid">
-          <article class="service-card"><span>Kitchen Remodeling</span><h3>Modern kitchens</h3><p>Cabinets, counters, layout improvements, lighting, islands, backsplashes, and finish coordination.</p></article>
-          <article class="service-card"><span>Bathroom Remodeling</span><h3>Spa-style bathrooms</h3><p>Walk-in showers, tile, vanities, fixtures, storage, lighting, and practical everyday upgrades.</p></article>
-          <article class="service-card"><span>Flooring</span><h3>Durable new floors</h3><p>Installation and replacement options that refresh the whole home and stand up to Florida living.</p></article>
-          <article class="service-card"><span>Fireplaces</span><h3>Feature walls</h3><p>Custom fireplace walls, mantles, paneling, tile surrounds, and built-in visual focal points.</p></article>
-          <article class="service-card"><span>Exterior Carpentry</span><h3>Dormers and trim</h3><p>Dormer repairs, exterior wood details, siding updates, trim replacement, and curb-appeal carpentry.</p></article>
-          <article class="service-card"><span>Interior Renovations</span><h3>Full-room updates</h3><p>Living rooms, dining areas, trim, paint, carpentry, lighting, and cohesive interior transformations.</p></article>
-          <article class="service-card"><span>Custom Projects</span><h3>Tailored upgrades</h3><p>Project planning, materials coordination, and finish details built around each homeowner's goals.</p></article>
+          <article class="service-card"><span>Kitchen</span><h3>Kitchen remodeling</h3><p>Cabinets, counters, backsplashes, lighting, islands, and finish upgrades.</p></article>
+          <article class="service-card"><span>Bathroom</span><h3>Bathroom remodeling</h3><p>Vanities, showers, tile, flooring, lighting, mirrors, and fixtures.</p></article>
+          <article class="service-card"><span>Exterior</span><h3>Dormers and trim</h3><p>Dormer repairs, exterior wood details, siding updates, and trim replacement.</p></article>
+          <article class="service-card"><span>Flooring</span><h3>Floor installation</h3><p>Floor replacement and installation for cleaner, stronger interior spaces.</p></article>
+          <article class="service-card"><span>Interior</span><h3>Room updates</h3><p>Trim, paint, feature walls, interior upgrades, and finish carpentry.</p></article>
+          <article class="service-card"><span>Custom</span><h3>Custom carpentry</h3><p>Built-ins, repairs, wood details, and tailored home improvements.</p></article>
         </div>
       </div>
     </section>
@@ -413,7 +367,7 @@
         <article class="story-panel">
           <div>
             <span class="eyebrow">Before + After</span>
-            <h2>Real bathroom transformation proof.</h2>
+            <h2>Bathroom before & after.</h2>
             <p>This bathroom project shows the transformation from cabinet and wall prep to a finished double vanity, shiplap feature wall, glass shower, lighting, mirrors, and clean modern finishes.</p>
           </div>
           <div class="metrics">
@@ -431,7 +385,7 @@
         <article class="story-panel">
           <div>
             <span class="eyebrow">Exterior Before + After</span>
-            <h2>Dormers rebuilt with clean exterior detail.</h2>
+            <h2>Exterior dormers before & after.</h2>
             <p>This exterior dormer project shows the upper roofline before repair and the finalized wood cladding around the windows for a stronger, cleaner curb-appeal finish.</p>
           </div>
           <div class="metrics">
@@ -452,54 +406,29 @@
       </div>
     </section>
 
-    <section class="light-band" id="areas">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Service Areas</span>
-            <h2>Local pages for local intent.</h2>
-          </div>
-          <p>These blocks can become full landing pages with unique photos, FAQs, testimonials, and projects for each community.</p>
-        </div>
-        <div class="area-grid">
-          <article class="area-card"><span>Duval County</span><h3>Jacksonville</h3><p>Kitchen, bathroom, flooring, fireplace, and interior remodels for Jacksonville homeowners.</p><a href="#estimate">Plan a Jacksonville remodel</a></article>
-          <article class="area-card"><span>Coastal Homes</span><h3>Ponte Vedra</h3><p>Premium finishes, bright interiors, and practical upgrades for coastal Northeast Florida homes.</p><a href="#estimate">Start in Ponte Vedra</a></article>
-          <article class="area-card"><span>Growing Communities</span><h3>Nocatee</h3><p>Modern upgrades for newer homes, including kitchens, baths, floors, and custom feature walls.</p><a href="#estimate">Remodel in Nocatee</a></article>
-          <article class="area-card"><span>Historic + Modern</span><h3>St. Augustine</h3><p>Thoughtful remodeling that respects the home while making the space easier to live in.</p><a href="#estimate">Book in St. Augustine</a></article>
-          <article class="area-card"><span>Northeast Florida</span><h3>Nearby Areas</h3><p>Service-area content can expand as ROMERO'S CARPENTRY confirms preferred communities and project types.</p><a href="#estimate">Ask about your area</a></article>
-          <article class="area-card"><span>SEO Strategy</span><h3>City + Service</h3><p>Target searches like bathroom remodeler Jacksonville FL and kitchen renovation Ponte Vedra.</p><a href="#services">Explore services</a></article>
-        </div>
-      </div>
-    </section>
-
     <section id="projects">
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Project Gallery</span>
-            <h2>Visual proof for quote-ready homeowners.</h2>
+            <span class="eyebrow">Project Photos</span>
+            <h2>Recent work.</h2>
           </div>
-          <p>Real before-and-after project photos help homeowners understand the quality, scope, and finish level before requesting an estimate.</p>
+          <p>Kitchen, bathroom, and exterior carpentry photos that show the work clearly.</p>
         </div>
         <div class="gallery-tools" aria-label="Project filters">
           <button class="filter active" type="button" data-filter="all">All</button>
           <button class="filter" type="button" data-filter="kitchen">Kitchens</button>
           <button class="filter" type="button" data-filter="bathroom">Bathrooms</button>
           <button class="filter" type="button" data-filter="exterior">Exterior</button>
-          <button class="filter" type="button" data-filter="fireplace">Fireplaces</button>
         </div>
         <div class="gallery-grid">
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-before.jpeg" alt="Bathroom before final finishes with vanity cabinets and shiplap wall installed" loading="lazy" /><div><h3>Bathroom before: vanity wall prep</h3><p>Cabinet layout, shiplap wall, lighting locations, and shower area before final finishes.</p></div></article>
-          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-after.jpeg" alt="Finished bathroom with double vanity, mirrors, sconces, glass shower, and modern finishes" loading="lazy" /><div><h3>Bathroom after: completed vanity and shower</h3><p>Finished double vanity, mirrors, wall sconces, glass shower, countertops, and clean trim work.</p></div></article>
-          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-before-1.jpeg" alt="Exterior dormer before finish carpentry with older siding and trim removed" loading="lazy" /><div><h3>Exterior dormers before: prep stage</h3><p>Dormer surfaces prepared for exterior carpentry repairs, trim work, and new finish materials.</p></div></article>
-          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-before-2.jpeg" alt="Exterior dormers before with repair areas visible on upper roofline" loading="lazy" /><div><h3>Exterior dormers before: repair areas</h3><p>Upper dormer sections prepared for new wood cladding and cleaner exterior detailing.</p></div></article>
-          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-after-1.jpeg" alt="Finished exterior dormers with new natural wood cladding around windows" loading="lazy" /><div><h3>Exterior dormers after: finished front view</h3><p>New wood cladding and trim details give the dormers a stronger, cleaner exterior finish.</p></div></article>
-          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-after-2.jpeg" alt="Close-up of finished exterior dormer wood cladding and window trim" loading="lazy" /><div><h3>Exterior dormers after: detail view</h3><p>Close-up finish work around the dormer window, siding lines, and exterior trim.</p></div></article>
+          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-before.jpeg" alt="Bathroom before final finishes with vanity cabinets and shiplap wall installed" loading="lazy" /><span class="project-tag">Before</span><div><h3>Bathroom before</h3><p>Vanity wall, cabinet layout, lighting locations, and shower area before final finishes.</p></div></article>
+          <article class="project-card" data-project="bathroom"><img src="./assets/bathroom-2-after.jpeg" alt="Finished bathroom with double vanity, mirrors, sconces, glass shower, and modern finishes" loading="lazy" /><span class="project-tag after">After</span><div><h3>Bathroom after</h3><p>Finished double vanity, mirrors, wall sconces, glass shower, countertops, and trim.</p></div></article>
+          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-before-2.jpeg" alt="Exterior dormers before with repair areas visible on upper roofline" loading="lazy" /><span class="project-tag">Before</span><div><h3>Exterior dormers before</h3><p>Upper dormer sections prepared for new wood cladding and exterior trim.</p></div></article>
+          <article class="project-card" data-project="exterior"><img src="./assets/exterior-dormers-after-1.jpeg" alt="Finished exterior dormers with new natural wood cladding around windows" loading="lazy" /><span class="project-tag after">After</span><div><h3>Exterior dormers after</h3><p>Finished wood cladding and trim details around the dormer windows.</p></div></article>
           <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/before-1.jpeg" alt="Kitchen before remodel with older cabinets, island, counters, and flooring" loading="lazy" /><span class="project-tag">Before</span><div><h3>Kitchen before: original layout</h3><p>Existing cabinets, counters, lighting, island, and flooring before the new finish package.</p></div></article>
-          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/before-2.jpeg" alt="Kitchen before remodel viewed from the living area with older cabinetry and counters" loading="lazy" /><span class="project-tag">Before</span><div><h3>Kitchen before: living area view</h3><p>Original kitchen connection to the nearby living space before the updated cabinetry and finish work.</p></div></article>
-          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/after-1.jpeg" alt="Finished kitchen remodel with gray cabinets, white counters, lighting, backsplash, and range hood" loading="lazy" /><span class="project-tag after">After</span><div><h3>Kitchen after: finished cabinetry</h3><p>Updated cabinets, counters, backsplash, hood detail, hardware, lighting, and clean modern finishes.</p></div></article>
-          <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-1/after-video.mp4" type="video/mp4" /></video><span class="project-tag after">After Video</span><div><h3>Kitchen after: final walkthrough</h3><p>Video view of the completed kitchen so homeowners can see the finished space more clearly.</p></div></article>
-          <article class="project-card" data-project="fireplace"><img src="./assets/hero-after.png" alt="Custom fireplace wall remodel with bright paneling and wood mantle" loading="lazy" /><div><h3>Fireplace feature wall</h3><p>Custom focal-point wall designed to change the feel of the living room.</p></div></article>
+          <article class="project-card" data-project="kitchen"><img src="./assets/kitchen-1/after-1.jpeg" alt="Finished kitchen remodel with gray cabinets, white counters, lighting, backsplash, and range hood" loading="lazy" /><span class="project-tag after">After</span><div><h3>Kitchen after</h3><p>Updated cabinets, counters, backsplash, hood detail, hardware, and lighting.</p></div></article>
+          <article class="project-card" data-project="kitchen"><video controls muted playsinline preload="metadata" poster="./assets/kitchen-1/after-1.jpeg"><source src="./assets/kitchen-1/after-video.mp4" type="video/mp4" /></video><span class="project-tag after">Video</span><div><h3>Kitchen walkthrough</h3><p>Final view of the completed kitchen.</p></div></article>
         </div>
       </div>
     </section>
@@ -509,32 +438,15 @@
         <div class="section-head">
           <div>
             <span class="eyebrow">FAQ</span>
-            <h2>Answers that match real searches.</h2>
+            <h2>Quick answers.</h2>
           </div>
-          <p>FAQ content helps visitors self-qualify and gives search engines clearer context about services, locations, and intent.</p>
+          <p>The basics customers usually want before calling or requesting an estimate.</p>
         </div>
         <div class="faq-grid">
-          <article class="faq-item"><h3>Does ROMERO'S CARPENTRY offer free estimates?</h3><p>Yes. Homeowners can request a free estimate for kitchens, bathrooms, flooring, fireplaces, exterior dormers, interiors, and full remodeling projects.</p></article>
-          <article class="faq-item"><h3>What areas do you serve?</h3><p>ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.</p></article>
-          <article class="faq-item"><h3>What should I prepare before calling?</h3><p>Bring your project type, city, timeline, rough budget, and any photos of the current space or inspiration images.</p></article>
-          <article class="faq-item"><h3>Can this site rank for multiple cities?</h3><p>Yes, with unique service-area pages, real project proof, consistent business information, reviews, and fast technical performance.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Reviews</span>
-            <h2>Trust signals near the call to action.</h2>
-          </div>
-          <p>Replace these sample testimonials with real Google reviews after client approval.</p>
-        </div>
-        <div class="review-grid">
-          <article class="review-card"><strong>★★★★★</strong><h3>Clear process</h3><p>"The team explained the scope, timeline, and finish options before work started."</p></article>
-          <article class="review-card"><strong>★★★★★</strong><h3>Beautiful result</h3><p>"Our living room feels completely different after the fireplace and flooring updates."</p></article>
-          <article class="review-card"><strong>★★★★★</strong><h3>Easy estimate</h3><p>"Fast response, helpful suggestions, and a remodel plan that made sense for our home."</p></article>
+          <article class="faq-item"><h3>Do you offer estimates?</h3><p>Yes. You can request an estimate online, schedule a consultation, or call directly.</p></article>
+          <article class="faq-item"><h3>What areas do you serve?</h3><p>Jacksonville and nearby Northeast Florida communities.</p></article>
+          <article class="faq-item"><h3>What projects do you handle?</h3><p>Kitchens, bathrooms, flooring, exterior dormers, trim, interiors, and custom carpentry.</p></article>
+          <article class="faq-item"><h3>What should I send?</h3><p>Your project type, city, timeline, and photos of the current space are helpful.</p></article>
         </div>
       </div>
     </section>
@@ -543,8 +455,8 @@
       <div class="container booking-layout">
         <article class="booking-card">
           <span class="eyebrow">Book Online</span>
-          <h2>Choose your free estimate spot.</h2>
-          <p>Pick an available Monday-Friday consultation time directly from ROMERO'S CARPENTRY's Google Calendar booking page.</p>
+          <h2>Choose a consultation time.</h2>
+          <p>Pick an available Monday-Friday appointment through ROMERO'S CARPENTRY's Google Calendar booking page.</p>
           <div class="booking-steps">
             <div class="booking-step"><strong>1</strong><span>Select a 90-minute consultation slot between 8:00 AM and 1:30 PM.</span></div>
             <div class="booking-step"><strong>2</strong><span>Add your contact information and project details in the booking form.</span></div>
@@ -552,7 +464,7 @@
           </div>
           <div class="hero-actions">
             <a class="btn btn-primary" data-calendar-link href="https://calendar.app.google/Rxy2qoWPBhW81quF6" target="_blank" rel="noopener">Open Booking Page</a>
-            <button class="btn btn-secondary" type="button" data-open-chat>Ask a Question</button>
+            <a class="btn btn-secondary" href="tel:+19047292379">Call Instead</a>
           </div>
           <p class="fine-print">If the calendar does not load below, use the Open Booking Page button.</p>
         </article>
@@ -570,9 +482,9 @@
     <section id="estimate">
       <div class="container quote-layout">
         <article class="quote-card">
-          <span class="eyebrow">Free Estimate</span>
-          <h2>Tell us about your remodel.</h2>
-          <p class="fine-print">Send your project details directly to ROMERO'S CARPENTRY. The request is captured securely and the team can follow up with the next step.</p>
+          <span class="eyebrow">Estimate</span>
+          <h2>Tell us about your project.</h2>
+          <p class="fine-print">Send the details and ROMERO'S CARPENTRY will follow up with the next step.</p>
           <form name="estimate-request" method="POST" action="/" netlify data-netlify="true" netlify-honeypot="bot-field" data-estimate-form>
             <input type="hidden" name="form-name" value="estimate-request" />
             <p hidden>
@@ -612,10 +524,11 @@
         <aside class="quote-card">
           <span class="eyebrow">Contact</span>
           <h3>ROMERO'S CARPENTRY</h3>
-          <p>For the fastest conversion path, keep phone and quote actions visible throughout the page.</p>
+          <p>For faster help, call or send the project details through the estimate form.</p>
           <div class="contact-list">
             <a href="tel:+19047292379"><strong>Phone</strong><span>(904) 729-2379</span></a>
-            <span><strong>Services</strong><span>Kitchens, baths, floors, interiors</span></span>
+            <span><strong>Email</strong><span>info@romeroscarpentry.com</span></span>
+            <span><strong>Services</strong><span>Kitchens, baths, floors, dormers, trim</span></span>
             <span><strong>Areas</strong><span>Jacksonville + nearby communities</span></span>
             <span><strong>Website by</strong><span>Trustbyte LLC</span></span>
           </div>
@@ -627,50 +540,13 @@
   <footer class="footer">
     <div class="container">
       <span>ROMERO'S CARPENTRY | Built Right. Built To Last.</span>
-      <span>Website strategy and build by Trustbyte LLC.</span>
+      <span>info@romeroscarpentry.com | (904) 729-2379 | Website by Trustbyte LLC</span>
     </div>
   </footer>
 
   <div class="sticky-cta" aria-label="Mobile contact actions">
     <a class="btn btn-secondary" href="tel:+19047292379">Call Now</a>
-    <a class="btn btn-primary" href="#estimate">Free Estimate</a>
-  </div>
-
-  <div class="chat-widget" aria-live="polite">
-    <div class="chat-greeting" data-chat-greeting>
-      <strong>How can I help?</strong>
-      <p>Ask our AI-assisted remodel helper about services, areas, estimates, or booking a consultation.</p>
-      <div class="chat-greeting-actions">
-        <button type="button" data-open-chat>Ask now</button>
-        <button type="button" data-dismiss-chat>Later</button>
-      </div>
-    </div>
-    <div class="chat-panel" data-chat-panel>
-      <div class="chat-head">
-        <span>
-          <strong>AI-Assisted Remodel Helper</strong>
-          <span>Ask questions or schedule a consultation.</span>
-        </span>
-        <button class="chat-close" type="button" data-close-chat aria-label="Close chat">×</button>
-      </div>
-      <div class="chat-messages" data-chat-messages>
-        <div class="message">Hi, how can I help? I can answer common questions about remodeling services, service areas, estimates, and scheduling.</div>
-      </div>
-      <div class="quick-questions">
-        <button type="button" data-question="services">Services</button>
-        <button type="button" data-question="areas">Service areas</button>
-        <button type="button" data-question="prepare">What to prepare</button>
-        <button type="button" data-question="schedule">Schedule</button>
-      </div>
-      <form class="chat-input-row" data-chat-form>
-        <input data-chat-input placeholder="Ask a question" aria-label="Ask a question" />
-        <button class="btn btn-primary" type="submit">Send</button>
-      </form>
-    </div>
-    <button class="btn btn-primary chat-toggle" type="button" data-chat-toggle>
-      <span>Ask or Schedule</span>
-      <span>+</span>
-    </button>
+    <a class="btn btn-primary" href="#estimate">Estimate</a>
   </div>
 
   <script>
@@ -748,82 +624,6 @@
       }
     });
 
-    const chatPanel = document.querySelector('[data-chat-panel]');
-    const chatGreeting = document.querySelector('[data-chat-greeting]');
-    const chatMessages = document.querySelector('[data-chat-messages]');
-    const chatInput = document.querySelector('[data-chat-input]');
-    const cannedAnswers = {
-      services: "ROMERO'S CARPENTRY can help with kitchen remodeling, bathroom remodeling, flooring, fireplace feature walls, exterior dormers, interior renovations, and custom home upgrades.",
-      areas: "ROMERO'S CARPENTRY serves Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby Northeast Florida communities.",
-      prepare: 'Helpful details include photos of the current space, your city, project type, rough timeline, budget range, and inspiration images.',
-      schedule: "You can schedule directly through ROMERO'S CARPENTRY's Google Calendar booking page. Pick a Monday-Friday estimate slot and the team will receive the booking details.",
-      estimate: 'Free estimates are available. You can use the quote form, call (904) 729-2379, or schedule through the calendar link.',
-      timeline: 'Timelines depend on project scope, materials, and availability. A quick consultation is the best way to set expectations.',
-      cost: 'Project cost depends on scope, materials, layout changes, and finish level. The estimate request helps the team understand the project before quoting.'
-    };
-
-    const addMessage = (text, type = 'bot') => {
-      const bubble = document.createElement('div');
-      bubble.className = type === 'user' ? 'message user' : 'message';
-      bubble.textContent = text;
-      chatMessages.appendChild(bubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    };
-
-    const answerQuestion = (question) => {
-      const normalized = question.toLowerCase();
-      if (cannedAnswers[question]) return cannedAnswers[question];
-      if (normalized.includes('cost') || normalized.includes('price') || normalized.includes('budget')) return cannedAnswers.cost;
-      if (normalized.includes('time') || normalized.includes('long') || normalized.includes('timeline')) return cannedAnswers.timeline;
-      if (normalized.includes('schedule') || normalized.includes('appointment') || normalized.includes('calendar')) return cannedAnswers.schedule;
-      if (normalized.includes('area') || normalized.includes('jacksonville') || normalized.includes('ponte') || normalized.includes('nocatee') || normalized.includes('augustine')) return cannedAnswers.areas;
-      if (normalized.includes('service') || normalized.includes('kitchen') || normalized.includes('bath') || normalized.includes('floor') || normalized.includes('fireplace')) return cannedAnswers.services;
-      return "Great question. For the fastest answer, schedule a consultation or send your project details through the estimate form so ROMERO'S CARPENTRY can follow up directly.";
-    };
-
-    const openChat = () => {
-      chatPanel?.classList.add('open');
-      chatPanel?.classList.add('attention');
-      chatGreeting?.classList.add('hidden');
-      chatInput?.focus();
-      setTimeout(() => chatPanel?.classList.remove('attention'), 1600);
-    };
-
-    document.querySelectorAll('[data-open-chat], [data-chat-toggle]').forEach((button) => {
-      button.addEventListener('click', () => {
-        if (chatPanel?.classList.contains('open')) {
-          chatPanel.classList.remove('open');
-        } else {
-          openChat();
-        }
-      });
-    });
-
-    document.querySelector('[data-close-chat]')?.addEventListener('click', () => chatPanel?.classList.remove('open'));
-    document.querySelector('[data-dismiss-chat]')?.addEventListener('click', () => chatGreeting?.classList.add('hidden'));
-
-    setTimeout(() => {
-      if (!chatPanel?.classList.contains('open')) {
-        chatGreeting?.classList.remove('hidden');
-      }
-    }, 1200);
-
-    document.querySelectorAll('[data-question]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const question = button.dataset.question;
-        addMessage(button.textContent, 'user');
-        addMessage(answerQuestion(question));
-      });
-    });
-
-    document.querySelector('[data-chat-form]')?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const value = chatInput.value.trim();
-      if (!value) return;
-      addMessage(value, 'user');
-      addMessage(answerQuestion(value));
-      chatInput.value = '';
-    });
   </script>
 </body>
 </html>
