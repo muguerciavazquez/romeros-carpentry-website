@@ -31,3 +31,14 @@ Client slogan: Built Right. Built To Last.
 
 The site should focus on conversion for homeowners in Jacksonville, Ponte Vedra, Nocatee, St. Augustine, and nearby areas. The strongest proof will come from before-and-after remodeling photography, clear service categories, and a direct free-estimate call to action.
 
+
+## Customer reviews
+
+The Reviews section includes a 1–5 star review form and public review cards. No sample or invented endorsements are published.
+
+Deploy the site to Netlify with form detection enabled. Confirm `customer-review` appears in Netlify Forms after deployment, and enable email notifications if desired. Submissions cannot be received from a local preview. Test a submission on the deployed site before launch.
+
+To publish a review, open its submission in Netlify Forms, confirm publication consent, and add its public fields to `assets/reviews.json`, then redeploy. The array entries use this structure: `{"name":"Customer display name","rating":5,"project":"Kitchen","review":"Customer's original review text"}`. Publish only genuine submitted reviews; never copy the private email or other submission metadata into this file. Approval/publication is manual; marking a submission in Netlify does not automatically publish it. Remove an entry and redeploy to unpublish it.
+
+The public section calculates the average from published reviews, displays rating cards, and shows an honest empty state until the first review is approved.
+

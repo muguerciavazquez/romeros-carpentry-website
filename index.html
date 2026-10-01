@@ -313,6 +313,17 @@
       .design-scene { min-height: 340px; height: 52vh; }
       .contact-list a, .contact-list span { flex-direction: column; gap: 2px; }
     }
+    .reviews-layout { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:24px; align-items:start; }
+    .reviews-list { display:grid; gap:14px; }
+    .review-stars { color:var(--gold-2); font-size:24px; letter-spacing:.12em; }
+    .review-card blockquote { margin:16px 0; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .review-card h3 { overflow-wrap:anywhere; }
+    .review-form label { display:grid; gap:6px; font-weight:700; }
+    .review-consent { display:flex !important; align-items:start; font-weight:400 !important; font-size:14px; }
+    .review-consent input { width:auto; margin-top:5px; }
+    .review-status { margin:0; color:var(--gold-2); }
+    .review-empty { padding:28px; border:1px dashed var(--line); border-radius:var(--radius); }
+    @media(max-width:940px) { .reviews-layout { grid-template-columns:1fr; } }
   </style>
   <script type="application/ld+json">
     {
@@ -368,7 +379,7 @@
       <nav class="nav" data-nav aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#transformation">Before + After</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">Projects</a><a href="#reviews">Reviews</a>
         <a href="#booking">Schedule</a>
         <a class="btn btn-primary" href="#estimate">Estimate</a>
       </nav>
@@ -547,6 +558,43 @@
       </div>
     </section>
 
+    <section id="reviews" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Customer Reviews</span><h2 id="reviews-heading">Your home. Your experience.</h2></div>
+          <p>Worked with ROMERO'S CARPENTRY? Tell us how it went. Your feedback helps other homeowners get to know our work.</p>
+        </div>
+        <div class="reviews-layout">
+          <div>
+            <p data-review-summary class="fine-print"></p>
+            <div class="reviews-list" data-review-list>
+              <div class="review-empty"><h3>Share your experience.</h3><p>Customer reviews will appear here once approved. Have a completed project with us? Be the first to leave a review.</p></div>
+            </div>
+          </div>
+          <article class="quote-card">
+            <h3>Leave a review</h3>
+            <p class="fine-print" id="review-policy">Reviews are checked before publication. Your display name, rating, project type, and review may appear on this website. Your email stays private.</p>
+            <form class="review-form" name="customer-review" method="POST" action="/review-thank-you.html" data-netlify="true" netlify-honeypot="review-bot" data-review-form aria-describedby="review-policy">
+              <input type="hidden" name="form-name" value="customer-review" />
+              <p hidden><label>Leave this blank <input name="review-bot" tabindex="-1" autocomplete="off" /></label></p>
+              <div class="form-row">
+                <label>Display name<input name="display-name" required maxlength="80" placeholder="e.g. Maria S." autocomplete="nickname" /></label>
+                <label>Email (private)<input type="email" name="email" required maxlength="254" autocomplete="email" /></label>
+              </div>
+              <div class="form-row">
+                <label>Your rating<select name="rating" required><option value="">Select a rating</option><option value="5">★★★★★ — 5 / 5</option><option value="4">★★★★☆ — 4 / 5</option><option value="3">★★★☆☆ — 3 / 5</option><option value="2">★★☆☆☆ — 2 / 5</option><option value="1">★☆☆☆☆ — 1 / 5</option></select></label>
+                <label>Project type<select name="project" required><option value="">Select your project</option><option>Kitchen</option><option>Bathroom</option><option>Flooring</option><option>Exterior</option><option>Custom carpentry</option><option>Other</option></select></label>
+              </div>
+              <label>Your review<textarea name="review" required minlength="10" maxlength="2000" placeholder="Tell us about your project and your experience working with our team."></textarea></label>
+              <label class="review-consent"><input type="checkbox" name="publication-consent" value="yes" required />I worked with ROMERO'S CARPENTRY and agree to have my review published on this website.</label>
+              <button class="btn btn-primary" type="submit">Submit review</button>
+              <p class="review-status" role="status" aria-live="polite" data-review-status></p>
+              <noscript><p class="fine-print">Enable JavaScript to view published reviews.</p></noscript>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
     <section class="light-band" id="faq">
       <div class="container">
         <div class="section-head">
@@ -663,7 +711,7 @@
     <a class="btn btn-primary" href="#estimate">Estimate</a>
   </div>
 
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="./assets/reviews.js" defer></script><script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script>
     const calendarUrl = 'https://calendar.app.google/Rxy2qoWPBhW81quF6';
     const root = document.documentElement;
